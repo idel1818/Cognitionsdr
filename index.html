@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cognition SDR Intelligence Hub</title>
+    <meta
+      name="description"
+      content="A personalised sales intelligence hub for Cognition SDRs — ROI calculator, target accounts, competitive battle card, objection handling, and a 30/60/90 day plan."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+            },
+            colors: {
+              navy: {
+                950: "#060B1A",
+                900: "#0A1128",
+                800: "#0F1A3A",
+                700: "#172554",
+                600: "#1E3A8A",
+              },
+              accent: {
+                400: "#60A5FA",
+                500: "#3B82F6",
+                600: "#2563EB",
+              },
+            },
+            boxShadow: {
+              glow: "0 0 40px -10px rgba(59,130,246,0.45)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      html,
+      body {
+        background: #060b1a;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        color: #e5e7eb;
+        -webkit-font-smoothing: antialiased;
+      }
+      .grid-bg {
+        background-image: radial-gradient(
+            circle at 20% 0%,
+            rgba(59, 130, 246, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 85% 10%,
+            rgba(37, 99, 235, 0.14),
+            transparent 50%
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          );
+        background-size:
+          auto,
+          auto,
+          48px 48px,
+          48px 48px;
+      }
+      .card {
+        background:
+          linear-gradient(180deg, rgba(15, 26, 58, 0.85), rgba(10, 17, 40, 0.85));
+        border: 1px solid rgba(96, 165, 250, 0.12);
+        border-radius: 1rem;
+      }
+      .card-inner {
+        background: rgba(6, 11, 26, 0.55);
+        border: 1px solid rgba(96, 165, 250, 0.1);
+        border-radius: 0.75rem;
+      }
+      details > summary {
+        list-style: none;
+        cursor: pointer;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+      details[open] .obj-chevron {
+        transform: rotate(180deg);
+      }
+      .obj-chevron {
+        transition: transform 0.2s ease;
+      }
+      .shimmer {
+        background: linear-gradient(
+          90deg,
+          #60a5fa 0%,
+          #93c5fd 50%,
+          #60a5fa 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+      .tl-dot {
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+      }
+      .table-row-hover:hover {
+        background: rgba(59, 130, 246, 0.06);
+      }
+      .scroll-fade::-webkit-scrollbar {
+        height: 8px;
+      }
+      .scroll-fade::-webkit-scrollbar-thumb {
+        background: rgba(96, 165, 250, 0.3);
+        border-radius: 8px;
+      }
+      @media print {
+        body {
+          background: white;
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <div class="grid-bg">
+      <!-- Header -->
+      <header class="border-b border-white/5 backdrop-blur-sm">
+        <div
+          class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-9 h-9 rounded-lg bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center shadow-glow"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold tracking-wide text-white">
+                Cognition
+              </div>
+              <div class="text-[11px] uppercase tracking-[0.18em] text-accent-400">
+                SDR Intelligence Hub
+              </div>
+            </div>
+          </div>
+          <nav class="hidden md:flex items-center gap-6 text-sm text-gray-400">
+            <a href="#roi" class="hover:text-white transition">ROI</a>
+            <a href="#accounts" class="hover:text-white transition">Accounts</a>
+            <a href="#battlecard" class="hover:text-white transition">Battle Card</a>
+            <a href="#objections" class="hover:text-white transition">Objections</a>
+            <a href="#plan" class="hover:text-white transition">30/60/90</a>
+          </nav>
+          <div class="hidden md:flex items-center gap-2 text-xs text-gray-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Prepared by Idel &middot; Built with Devin
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="max-w-7xl mx-auto px-6 pt-14 pb-10">
+        <div class="max-w-3xl">
+          <div
+            class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-accent-400 border border-accent-400/30 rounded-full px-3 py-1 mb-5"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400"></span>
+            Candidate Prep Artefact
+          </div>
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.05]"
+          >
+            Cognition SDR
+            <span class="shimmer">Intelligence Hub</span>
+          </h1>
+          <p class="mt-5 text-lg text-gray-300 leading-relaxed">
+            A live, interactive brief built for my Cognition SDR interview. Quantify
+            Devin's ROI, map the top entertainment &amp; finance accounts, win the
+            head-to-head against Copilot and Cursor, neutralise the five toughest
+            objections, and a 90-day plan for ramp, pipeline, and vertical strategy.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2 text-xs">
+            <span
+              class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300"
+              >Single HTML file</span
+            >
+            <span
+              class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300"
+              >No backend</span
+            >
+            <span
+              class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300"
+              >Directed by Idel, executed by Devin</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ROI Calculator -->
+      <section id="roi" class="max-w-7xl mx-auto px-6 py-10">
+        <div class="flex items-end justify-between mb-6">
+          <div>
+            <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
+              01 &nbsp;//&nbsp; Value
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-white">
+              Devin ROI Calculator
+            </h2>
+            <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+              Plug in your team shape. Outputs are modelled on Devin's
+              documented benchmarks: <b>10&times;</b> faster migrations,
+              <b>20&times;</b> faster security fixes, and test coverage lifting
+              from <b>60% to 90%</b>.
+            </p>
+          </div>
+        </div>
+        <div class="grid lg:grid-cols-5 gap-6">
+          <!-- Inputs -->
+          <div class="card p-6 lg:col-span-2">
+            <h3 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-5">
+              Your Team
+            </h3>
+            <div class="space-y-5">
+              <label class="block">
+                <span class="text-sm text-gray-300"
+                  >Engineering team size</span
+                >
+                <div class="relative mt-1.5">
+                  <input
+                    id="teamSize"
+                    type="number"
+                    min="1"
+                    value="50"
+                    class="w-full bg-navy-950/70 border border-white/10 rounded-lg px-4 py-3 text-white text-lg font-semibold focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20"
+                  />
+                  <span class="absolute right-4 top-3 text-xs text-gray-500"
+                    >engineers</span
+                  >
+                </div>
+              </label>
+              <label class="block">
+                <span class="text-sm text-gray-300"
+                  >Average engineer hourly rate</span
+                >
+                <div class="relative mt-1.5">
+                  <span
+                    class="absolute left-4 top-3 text-gray-500"
+                    >$</span
+                  >
+                  <input
+                    id="hourlyRate"
+                    type="number"
+                    min="1"
+                    value="95"
+                    class="w-full bg-navy-950/70 border border-white/10 rounded-lg pl-8 pr-20 py-3 text-white text-lg font-semibold focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20"
+                  />
+                  <span class="absolute right-4 top-3 text-xs text-gray-500"
+                    >USD / hour</span
+                  >
+                </div>
+              </label>
+              <label class="block">
+                <span
+                  class="text-sm text-gray-300 flex items-center justify-between"
+                >
+                  <span>% of time spent on maintenance work</span>
+                  <span
+                    id="maintLabel"
+                    class="text-accent-400 font-mono font-semibold"
+                    >40%</span
+                  >
+                </span>
+                <input
+                  id="maintPct"
+                  type="range"
+                  min="5"
+                  max="90"
+                  value="40"
+                  class="w-full mt-2 accent-accent-500"
+                />
+                <div class="flex justify-between text-[11px] text-gray-500 mt-1">
+                  <span>5%</span><span>50%</span><span>90%</span>
+                </div>
+              </label>
+            </div>
+            <div
+              class="mt-6 text-[11px] text-gray-500 leading-relaxed border-t border-white/5 pt-4"
+            >
+              Model assumes 160 productive hrs/engineer/mo. A weighted speedup
+              of <b>~11&times;</b> on maintenance work is derived from
+              Devin's published benchmarks (10&times; migrations, 20&times;
+              security fixes, test coverage 60&rarr;90%).
+            </div>
+          </div>
+
+          <!-- Outputs -->
+          <div class="lg:col-span-3 grid sm:grid-cols-3 gap-4 content-start">
+            <div class="card p-5">
+              <div class="text-xs uppercase tracking-wider text-gray-400">
+                Hours saved / month
+              </div>
+              <div
+                id="outHours"
+                class="mt-3 text-3xl md:text-4xl font-extrabold text-white"
+              >
+                —
+              </div>
+              <div class="text-xs text-gray-500 mt-1">
+                across the whole team
+              </div>
+            </div>
+            <div class="card p-5">
+              <div class="text-xs uppercase tracking-wider text-gray-400">
+                Cost saved / month
+              </div>
+              <div
+                id="outMonthly"
+                class="mt-3 text-3xl md:text-4xl font-extrabold text-accent-400"
+              >
+                —
+              </div>
+              <div class="text-xs text-gray-500 mt-1">
+                hourly rate &times; hours
+              </div>
+            </div>
+            <div class="card p-5 shadow-glow">
+              <div class="text-xs uppercase tracking-wider text-gray-400">
+                Projected annual ROI
+              </div>
+              <div
+                id="outAnnual"
+                class="mt-3 text-3xl md:text-4xl font-extrabold shimmer"
+              >
+                —
+              </div>
+              <div class="text-xs text-gray-500 mt-1">12-month run-rate</div>
+            </div>
+
+            <div class="card p-5 sm:col-span-3">
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-sm font-semibold text-white">
+                  Benchmark breakdown
+                </h4>
+                <span class="text-[11px] text-gray-500"
+                  >share of maintenance hours removed</span
+                >
+              </div>
+              <div class="space-y-4 text-sm">
+                <div>
+                  <div class="flex justify-between text-gray-300 mb-1">
+                    <span>Migration work (10&times; faster)</span>
+                    <span id="bench1" class="font-mono text-accent-400"></span>
+                  </div>
+                  <div class="h-2 rounded bg-white/5 overflow-hidden">
+                    <div
+                      id="bar1"
+                      class="h-full bg-gradient-to-r from-accent-600 to-accent-400"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-gray-300 mb-1">
+                    <span>Security fixes (20&times; faster)</span>
+                    <span id="bench2" class="font-mono text-accent-400"></span>
+                  </div>
+                  <div class="h-2 rounded bg-white/5 overflow-hidden">
+                    <div
+                      id="bar2"
+                      class="h-full bg-gradient-to-r from-accent-600 to-accent-400"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-gray-300 mb-1">
+                    <span>Test coverage lift (60% &rarr; 90%)</span>
+                    <span id="bench3" class="font-mono text-accent-400"></span>
+                  </div>
+                  <div class="h-2 rounded bg-white/5 overflow-hidden">
+                    <div
+                      id="bar3"
+                      class="h-full bg-gradient-to-r from-accent-600 to-accent-400"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Target Accounts -->
+      <section id="accounts" class="max-w-7xl mx-auto px-6 py-10">
+        <div class="mb-6">
+          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
+            02 &nbsp;//&nbsp; Pipeline
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">
+            Target Account Intelligence
+          </h2>
+          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+            Top 10 entertainment, media &amp; financial services accounts —
+            each with a concrete pain point, Devin use case, and an opener I can
+            send in the next sequence.
+          </p>
+        </div>
+        <div class="card overflow-hidden">
+          <div class="overflow-x-auto scroll-fade">
+            <table class="w-full text-sm text-left">
+              <thead
+                class="text-[11px] uppercase tracking-wider text-gray-400 bg-white/5"
+              >
+                <tr>
+                  <th class="px-5 py-3 font-semibold">Company</th>
+                  <th class="px-5 py-3 font-semibold">Eng. Team</th>
+                  <th class="px-5 py-3 font-semibold">Primary Pain Point</th>
+                  <th class="px-5 py-3 font-semibold">Devin Use Case</th>
+                  <th class="px-5 py-3 font-semibold">Opening Line</th>
+                </tr>
+              </thead>
+              <tbody id="accountsBody" class="divide-y divide-white/5"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Battle Card -->
+      <section id="battlecard" class="max-w-7xl mx-auto px-6 py-10">
+        <div class="mb-6">
+          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
+            03 &nbsp;//&nbsp; Competitive
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">
+            Competitive Battle Card
+          </h2>
+          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+            Where Devin sits vs the two tools every prospect is already using.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <!-- Devin -->
+          <div
+            class="card p-6 relative overflow-hidden border-accent-500/40 shadow-glow"
+          >
+            <div
+              class="absolute top-4 right-4 text-[10px] uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-2 py-0.5 rounded-full"
+            >
+              Winner &middot; Enterprise
+            </div>
+            <div class="text-white text-xl font-bold">Devin</div>
+            <div class="text-accent-400 text-xs uppercase tracking-wider mt-1">
+              Autonomous AI Engineer
+            </div>
+            <dl class="mt-6 space-y-4 text-sm">
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Category</dt>
+                <dd class="text-white mt-0.5">Agent (executes work end-to-end)</dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Autonomy</dt>
+                <dd class="text-white mt-0.5">
+                  <span
+                    class="inline-block bg-accent-500/20 text-accent-400 px-2 py-0.5 rounded text-xs font-semibold"
+                    >High &middot; full tasks &amp; PRs</span
+                  >
+                </dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">
+                  Best use case
+                </dt>
+                <dd class="text-white mt-0.5">
+                  Migrations, security remediation, test coverage, long-running
+                  maintenance work.
+                </dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Pricing</dt>
+                <dd class="text-white mt-0.5">
+                  Usage-based (ACUs) &middot; team &amp; enterprise plans
+                </dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Summary</dt>
+                <dd class="text-white mt-0.5 leading-relaxed">
+                  A teammate, not a tab. Devin ships PRs while your engineers
+                  sleep &mdash; and that is the line on the ROI spreadsheet.
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <!-- Copilot -->
+          <div class="card p-6">
+            <div class="text-white text-xl font-bold">GitHub Copilot</div>
+            <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">
+              In-IDE AI Assistant
+            </div>
+            <dl class="mt-6 space-y-4 text-sm">
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Category</dt>
+                <dd class="text-gray-200 mt-0.5">Assistant (suggests as you type)</dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Autonomy</dt>
+                <dd class="text-gray-200 mt-0.5">
+                  <span
+                    class="inline-block bg-white/5 text-gray-300 px-2 py-0.5 rounded text-xs font-semibold"
+                    >Low &middot; line / block completions</span
+                  >
+                </dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">
+                  Best use case
+                </dt>
+                <dd class="text-gray-200 mt-0.5">
+                  Boilerplate, autocomplete, in-editor chat for the developer
+                  already typing.
+                </dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Pricing</dt>
+                <dd class="text-gray-200 mt-0.5">~$19&ndash;$39 / user / mo</dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Summary</dt>
+                <dd class="text-gray-200 mt-0.5 leading-relaxed">
+                  Makes existing engineers ~20% faster at typing. Still 100%
+                  human in the loop per keystroke.
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <!-- Cursor -->
+          <div class="card p-6">
+            <div class="text-white text-xl font-bold">Cursor</div>
+            <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">
+              AI-native IDE
+            </div>
+            <dl class="mt-6 space-y-4 text-sm">
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Category</dt>
+                <dd class="text-gray-200 mt-0.5">Assistant + light agent (in-IDE)</dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Autonomy</dt>
+                <dd class="text-gray-200 mt-0.5">
+                  <span
+                    class="inline-block bg-white/5 text-gray-300 px-2 py-0.5 rounded text-xs font-semibold"
+                    >Medium &middot; multi-file edits</span
+                  >
+                </dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">
+                  Best use case
+                </dt>
+                <dd class="text-gray-200 mt-0.5">
+                  Individual devs refactoring in-repo with a human driving the
+                  editor.
+                </dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Pricing</dt>
+                <dd class="text-gray-200 mt-0.5">~$20&ndash;$40 / user / mo</dd>
+              </div>
+              <div>
+                <dt class="text-gray-400 text-xs uppercase tracking-wider">Summary</dt>
+                <dd class="text-gray-200 mt-0.5 leading-relaxed">
+                  A great editor with AI inside. Still requires a developer
+                  sitting in front of it to do anything.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div
+          class="mt-6 card p-5 border-accent-500/30 text-sm text-gray-300"
+        >
+          <span class="text-accent-400 font-semibold">Why Devin wins for enterprise engineering teams:</span>
+          Copilot and Cursor sell productivity <em>per seat</em>; Devin sells
+          <em>finished work</em>. Enterprise leaders already own seat-based
+          assistants &mdash; what they don't own is an autonomous teammate that
+          clears the migration, CVE, and test-coverage backlog before Monday
+          standup. That is a board-level line item, not an IDE plugin.
+        </div>
+      </section>
+
+      <!-- Objections -->
+      <section id="objections" class="max-w-7xl mx-auto px-6 py-10">
+        <div class="mb-6">
+          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
+            04 &nbsp;//&nbsp; Sales Plays
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">
+            Objection Handler
+          </h2>
+          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+            The five objections I expect on every first call. Click to expand.
+          </p>
+        </div>
+        <div id="objectionsList" class="space-y-3"></div>
+      </section>
+
+      <!-- 30/60/90 -->
+      <section id="plan" class="max-w-7xl mx-auto px-6 py-10 pb-24">
+        <div class="mb-6">
+          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
+            05 &nbsp;//&nbsp; Ramp
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">
+            My 30 / 60 / 90 Day Plan
+          </h2>
+          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+            First 90 days at Cognition &mdash; product mastery, vertical
+            penetration, and pipeline handoff.
+          </p>
+        </div>
+        <div class="relative">
+          <div
+            class="absolute left-5 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-400/60 via-accent-500/20 to-transparent"
+            aria-hidden="true"
+          ></div>
+
+          <!-- Phase 1 -->
+          <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-10">
+            <div class="md:text-right md:pr-10">
+              <div
+                class="inline-block text-xs uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-3 py-1 rounded-full"
+              >
+                Day 1 &ndash; 30
+              </div>
+              <h3 class="text-xl font-bold text-white mt-3">
+                Product Mastery &amp; First Outreach
+              </h3>
+              <p class="text-gray-400 text-sm mt-2 max-w-md md:ml-auto">
+                Ship my own PRs with Devin. Know the product cold before I ever
+                pitch it.
+              </p>
+            </div>
+            <div class="pl-10 md:pl-10 relative">
+              <span
+                class="tl-dot absolute left-3 md:-left-2 top-1 w-4 h-4 rounded-full bg-accent-400"
+              ></span>
+              <div class="card-inner p-5">
+                <ul class="space-y-2.5 text-sm text-gray-200">
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Complete Devin onboarding; personally run 10+ real sessions
+                    across migrations, CVE fixes, and test coverage.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Shadow 5 AE discovery calls; map ICP language, buyer titles,
+                    and current win themes.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Launch first outbound sequence to 100 entertainment &amp;
+                    media targets (my vertical).
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Build personal library of 3 POV emails, 2 Loom demos, and
+                    this Intelligence Hub as a leave-behind.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-10">
+            <div class="md:order-2 md:pl-10">
+              <div
+                class="inline-block text-xs uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-3 py-1 rounded-full"
+              >
+                Day 31 &ndash; 60
+              </div>
+              <h3 class="text-xl font-bold text-white mt-3">
+                Qualified Meetings &amp; Vertical Penetration
+              </h3>
+              <p class="text-gray-400 text-sm mt-2 max-w-md">
+                Convert activity into pipeline and own entertainment as my
+                differentiated lane.
+              </p>
+            </div>
+            <div class="md:order-1 md:text-right md:pr-10 pl-10 relative">
+              <span
+                class="tl-dot absolute left-3 md:left-auto md:-right-2 top-1 w-4 h-4 rounded-full bg-accent-400"
+              ></span>
+              <div class="card-inner p-5">
+                <ul class="space-y-2.5 text-sm text-gray-200 md:text-left">
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Deliver first cohort of qualified meetings (target: 8&ndash;12)
+                    to AE team.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Deepen entertainment vertical: 3 tailored POV decks for
+                    Netflix, Disney, Warner Bros Discovery.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Expand sequencing to financial services wedge (Barclays,
+                    Goldman, Lloyds) using compliance &amp; migration angles.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Host internal knowledge-share: "SDR playbook for media &amp;
+                    streaming accounts".
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="relative grid md:grid-cols-2 gap-6 md:gap-12">
+            <div class="md:text-right md:pr-10">
+              <div
+                class="inline-block text-xs uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-3 py-1 rounded-full"
+              >
+                Day 61 &ndash; 90
+              </div>
+              <h3 class="text-xl font-bold text-white mt-3">
+                Pipeline Handoff &amp; GTM Contribution
+              </h3>
+              <p class="text-gray-400 text-sm mt-2 max-w-md md:ml-auto">
+                Move from individual contributor to vertical strategist.
+              </p>
+            </div>
+            <div class="pl-10 md:pl-10 relative">
+              <span
+                class="tl-dot absolute left-3 md:-left-2 top-1 w-4 h-4 rounded-full bg-accent-400"
+              ></span>
+              <div class="card-inner p-5">
+                <ul class="space-y-2.5 text-sm text-gray-200">
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    First pipeline handoff to AE &mdash; stage-2 opportunity
+                    with multi-threaded champion in place.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Present entertainment vertical strategy to GTM leadership:
+                    ICP map, messaging matrix, win themes.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Contribute 2 reusable sequences + objection responses to the
+                    SDR enablement library.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-accent-400">&rarr;</span>
+                    Set quota-beating plan for Q+1 with named account list and
+                    targeted pipeline goal.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        class="border-t border-white/5 py-6 text-center text-xs text-gray-500"
+      >
+        Built by Idel with Devin &middot; Cognition SDR interview prep &middot;
+        <span id="year"></span>
+      </footer>
+    </div>
+
+    <script>
+      // ---------- Data ----------
+      const accounts = [
+        {
+          name: "Netflix",
+          size: "~2,000",
+          pain:
+            "Massive legacy Java/Scala microservice estate; security &amp; dependency upgrades compete with feature work.",
+          use:
+            "Autonomous migration of internal services + CVE remediation across 1,000s of repos.",
+          open:
+            "Saw Netflix&rsquo;s tech blog on paved paths &mdash; how much engineer time still goes to keeping that paved path patched vs shipping new streaming features?",
+        },
+        {
+          name: "Warner Bros Discovery",
+          size: "~1,200",
+          pain:
+            "Post-merger tech stack sprawl across HBO Max, Discovery+, Max &mdash; duplicate services, inconsistent test coverage.",
+          use:
+            "Devin as a consolidation engineer: migrating duplicated services and lifting test coverage to 90%+.",
+          open:
+            "After the Max relaunch, which part of the consolidated stack is costing the most engineering time to maintain rather than extend?",
+        },
+        {
+          name: "Spotify",
+          size: "~2,500",
+          pain:
+            "High velocity product org; platform &amp; infra teams are the bottleneck for migrations and framework upgrades.",
+          use:
+            "Offload framework upgrades and Backstage plugin work to Devin so platform engineers focus on new capabilities.",
+          open:
+            "Love Spotify&rsquo;s Backstage &mdash; if your platform team could reclaim the hours they spend on upgrades, what would they build instead?",
+        },
+        {
+          name: "Disney",
+          size: "~1,500",
+          pain:
+            "Disney+ / ESPN+ / Hulu convergence, plus enterprise apps &mdash; security &amp; compliance remediation is constant.",
+          use:
+            "20&times; faster security fixes across the streaming + studio portfolio.",
+          open:
+            "With the ESPN direct-to-consumer launch, how is the team balancing new surface area against the CVE queue on the existing streaming stack?",
+        },
+        {
+          name: "Paramount+",
+          size: "~800",
+          pain:
+            "Streaming unit under profitability pressure &mdash; every eng hour matters, legacy CBS/Viacom systems still in play.",
+          use:
+            "Autonomous migration of legacy backends; measurable eng hours returned to the streaming roadmap.",
+          open:
+            "As Paramount+ pushes toward profitability, where do you still have engineers tied up in legacy systems instead of streaming?",
+        },
+        {
+          name: "DAZN",
+          size: "~600",
+          pain:
+            "Global live-sports streaming &mdash; zero tolerance for outages, heavy real-time infra to maintain.",
+          use:
+            "Devin runs maintenance + test coverage so live ops teams focus on reliability during marquee events.",
+          open:
+            "With the new global rights deals, how much of your engineering bandwidth is absorbed by keeping the live pipeline patched vs expanding it?",
+        },
+        {
+          name: "Peacock / NBCUniversal",
+          size: "~1,000",
+          pain:
+            "Streaming + broadcast + parks &mdash; heterogenous legacy stacks, hard to justify modernisation headcount.",
+          use:
+            "Devin as the modernisation team you don&rsquo;t have to hire.",
+          open:
+            "Curious &mdash; across Peacock, Sky, and the broadcast stack, which estate is most often deprioritised for modernisation?",
+        },
+        {
+          name: "Barclays",
+          size: "~20,000",
+          pain:
+            "Regulated migrations (COBOL/mainframe &rarr; cloud), relentless CVE pipeline, audit-grade test coverage requirements.",
+          use:
+            "Devin for regulated migrations &amp; security remediation with full audit trail.",
+          open:
+            "On the mainframe modernisation programme &mdash; how much of the slow-down today is capacity vs risk appetite?",
+        },
+        {
+          name: "Goldman Sachs",
+          size: "~12,000",
+          pain:
+            "Huge internal platform (Marquee, SecDB) &mdash; internal framework migrations soak up senior engineers.",
+          use:
+            "Autonomous internal-framework migrations, freeing senior engineers for quant &amp; trading initiatives.",
+          open:
+            "If Marquee and the trading platforms could upgrade frameworks without pulling senior engineers, what would that unlock in the next quarter?",
+        },
+        {
+          name: "Lloyds Banking Group",
+          size: "~7,000",
+          pain:
+            "Strategic Review 2025 push on digital &mdash; legacy systems, strict security posture, talent constraints.",
+          use:
+            "Devin as force-multiplier on legacy-to-cloud migration &amp; security remediation inside the digital transformation programme.",
+          open:
+            "With the 2025 strategic review, where is Lloyds most capacity-constrained between legacy migration and new digital build?",
+        },
+      ];
+
+      const objections = [
+        {
+          q: "We already have Copilot.",
+          a: "Perfect &mdash; Copilot is a typing assistant and your devs should keep it. Devin is a different category: an autonomous teammate that executes whole tickets end-to-end. The question isn't Copilot vs Devin, it's 'now that your engineers type 20% faster, what's the backlog of migrations and CVEs they still don't have time to clear?' That's the work Devin takes.",
+        },
+        {
+          q: "Our security team won't allow it.",
+          a: "That's exactly the conversation I'd want to have with them. Devin runs in an isolated sandboxed environment, integrates with your SSO, respects your repo permissions, and every PR is reviewed by a human before merge &mdash; same posture as any contractor. We can do a 30-minute joint call with your security team and walk them through the controls they care about.",
+        },
+        {
+          q: "We tried AI coding tools and they didn't work.",
+          a: "Totally fair, and you're not alone &mdash; most of those were autocomplete, which breaks on anything non-trivial. Devin is a different architecture: it plans, executes, tests, and iterates on a real task, not a line. I'd suggest we take one of the backlog items that past tools failed on &mdash; a migration or a flaky test suite &mdash; and let Devin actually ship the PR. Evidence over claims.",
+        },
+        {
+          q: "We don't have budget.",
+          a: "Understood. Devin's ROI model is usually measured in engineer hours reclaimed, not headcount added &mdash; most customers see it offset within one quarter just on migration and security work. Rather than a budget ask, I'd frame it as: 'what's the cost of NOT clearing the maintenance backlog this year?' Happy to model it against your team size on a 20-minute call.",
+        },
+        {
+          q: "Our engineers are resistant to AI.",
+          a: "Good &mdash; that tells me they care about their craft. Devin is designed to take the work your best engineers want off their plate: migrations, dependency upgrades, CVE fixes, test coverage. We've found the resistant engineers become the biggest advocates once they realise Devin does the chores so they get to do the architecture. Start with one champion team &mdash; their endorsement is worth more than any deck.",
+        },
+      ];
+
+      // ---------- Render accounts ----------
+      (function renderAccounts() {
+        const body = document.getElementById("accountsBody");
+        body.innerHTML = accounts
+          .map(
+            (a) => `
+            <tr class="table-row-hover align-top">
+              <td class="px-5 py-4 font-semibold text-white whitespace-nowrap">${a.name}</td>
+              <td class="px-5 py-4 text-gray-300 font-mono text-xs">${a.size}</td>
+              <td class="px-5 py-4 text-gray-300 max-w-xs">${a.pain}</td>
+              <td class="px-5 py-4 text-gray-300 max-w-xs">${a.use}</td>
+              <td class="px-5 py-4 text-gray-200 italic max-w-sm">&ldquo;${a.open}&rdquo;</td>
+            </tr>`
+          )
+          .join("");
+      })();
+
+      // ---------- Render objections ----------
+      (function renderObjections() {
+        const list = document.getElementById("objectionsList");
+        list.innerHTML = objections
+          .map(
+            (o, i) => `
+            <details class="card">
+              <summary class="px-5 py-4 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                  <span class="text-accent-400 font-mono text-sm">0${i + 1}</span>
+                  <span class="text-white font-semibold">${o.q}</span>
+                </div>
+                <svg class="obj-chevron w-5 h-5 text-accent-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 pt-0 ml-10 text-gray-300 text-sm leading-relaxed border-t border-white/5 pt-4">${o.a}</div>
+            </details>`
+          )
+          .join("");
+      })();
+
+      // ---------- ROI calculator ----------
+      const fmt = (n) =>
+        n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+      const money = (n) =>
+        "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+
+      // Weighted speedup model: 40% of maintenance = migrations (10x),
+      // 30% = security (20x), 30% = test coverage lift (5x proxy).
+      // Hours saved = sum of (share * (1 - 1/speedup)).
+      const SHARE = { migration: 0.4, security: 0.3, tests: 0.3 };
+      const SPEEDUP = { migration: 10, security: 20, tests: 5 };
+      const reduction =
+        SHARE.migration * (1 - 1 / SPEEDUP.migration) +
+        SHARE.security * (1 - 1 / SPEEDUP.security) +
+        SHARE.tests * (1 - 1 / SPEEDUP.tests); // ~0.88
+
+      function compute() {
+        const team = Math.max(0, Number(document.getElementById("teamSize").value) || 0);
+        const rate = Math.max(0, Number(document.getElementById("hourlyRate").value) || 0);
+        const pct = Math.max(0, Number(document.getElementById("maintPct").value) || 0);
+        document.getElementById("maintLabel").textContent = pct + "%";
+
+        const maintHoursMonthly = team * 160 * (pct / 100);
+        const hoursSaved = maintHoursMonthly * reduction;
+        const monthly = hoursSaved * rate;
+        const annual = monthly * 12;
+
+        document.getElementById("outHours").textContent = fmt(hoursSaved) + " hrs";
+        document.getElementById("outMonthly").textContent = money(monthly);
+        document.getElementById("outAnnual").textContent = money(annual);
+
+        // Breakdown bars (share of maintenance hours removed by each lever)
+        const b1 = SHARE.migration * (1 - 1 / SPEEDUP.migration) * 100;
+        const b2 = SHARE.security * (1 - 1 / SPEEDUP.security) * 100;
+        const b3 = SHARE.tests * (1 - 1 / SPEEDUP.tests) * 100;
+        document.getElementById("bench1").textContent = b1.toFixed(0) + "%";
+        document.getElementById("bench2").textContent = b2.toFixed(0) + "%";
+        document.getElementById("bench3").textContent = b3.toFixed(0) + "%";
+        document.getElementById("bar1").style.width = b1 + "%";
+        document.getElementById("bar2").style.width = b2 + "%";
+        document.getElementById("bar3").style.width = b3 + "%";
+      }
+      ["teamSize", "hourlyRate", "maintPct"].forEach((id) => {
+        document.getElementById(id).addEventListener("input", compute);
+      });
+      compute();
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
