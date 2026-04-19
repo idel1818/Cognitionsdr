@@ -6,7 +6,7 @@
     <title>Cognition SDR Intelligence Hub</title>
     <meta
       name="description"
-      content="A personalised sales intelligence hub for Cognition SDRs — ROI calculator, target accounts, competitive battle card, objection handling, and a 30/60/90 day plan."
+      content="A personalised sales intelligence hub for Cognition SDRs — Devin ROI calculator, target accounts, sector terminal, account researcher, and objection handling."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -194,9 +194,8 @@
             <a href="#roi" class="hover:text-white transition">ROI</a>
             <a href="#accounts" class="hover:text-white transition">Accounts</a>
             <a href="#terminal" class="hover:text-white transition">Terminal</a>
-            <a href="#battlecard" class="hover:text-white transition">Battle Card</a>
+            <a href="#researcher" class="hover:text-white transition">Researcher</a>
             <a href="#objections" class="hover:text-white transition">Objections</a>
-            <a href="#plan" class="hover:text-white transition">30/60/90</a>
           </nav>
           <div class="hidden md:flex items-center gap-2 text-xs text-gray-400">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -601,165 +600,114 @@
         </div>
       </section>
 
-      <!-- Battle Card -->
-      <section id="battlecard" class="max-w-7xl mx-auto px-6 py-10">
+      <!-- Account Researcher -->
+      <section id="researcher" class="max-w-7xl mx-auto px-6 py-10">
         <div class="mb-6">
           <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            04 &nbsp;//&nbsp; Competitive
+            04 &nbsp;//&nbsp; Deep Dive
           </div>
           <h2 class="text-2xl md:text-3xl font-bold text-white">
-            Competitive Battle Card
+            Account Researcher
           </h2>
           <p class="text-gray-400 text-sm mt-2 max-w-2xl">
-            Where Devin sits vs the two tools every prospect is already using.
+            Search any company &mdash; get tailored Devin pain points and live
+            news articles that prove those pains are real.
           </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-5">
-          <!-- Devin -->
-          <div
-            class="card p-6 relative overflow-hidden border-accent-500/40 shadow-glow"
+
+        <div class="card p-5 md:p-6">
+          <label
+            for="researchInput"
+            class="block text-xs uppercase tracking-widest text-gray-500 mb-2"
+            >Target company</label
           >
-            <div
-              class="absolute top-4 right-4 text-[10px] uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-2 py-0.5 rounded-full"
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              id="researchInput"
+              type="text"
+              autocomplete="off"
+              placeholder="e.g. Netflix, Spotify, Goldman Sachs, Roblox..."
+              class="flex-1 bg-navy-950/60 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-accent-400 focus:shadow-glow"
+            />
+            <button
+              id="researchBtn"
+              class="px-5 py-3 rounded-lg bg-accent-500 hover:bg-accent-600 text-white font-semibold text-sm transition shadow-glow flex items-center justify-center gap-2"
             >
-              Winner &middot; Enterprise
-            </div>
-            <div class="text-white text-xl font-bold">Devin</div>
-            <div class="text-accent-400 text-xs uppercase tracking-wider mt-1">
-              Autonomous AI Engineer
-            </div>
-            <dl class="mt-6 space-y-4 text-sm">
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Category</dt>
-                <dd class="text-white mt-0.5">Agent (executes work end-to-end)</dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Autonomy</dt>
-                <dd class="text-white mt-0.5">
-                  <span
-                    class="inline-block bg-accent-500/20 text-accent-400 px-2 py-0.5 rounded text-xs font-semibold"
-                    >High &middot; full tasks &amp; PRs</span
-                  >
-                </dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">
-                  Best use case
-                </dt>
-                <dd class="text-white mt-0.5">
-                  Migrations, security remediation, test coverage, long-running
-                  maintenance work.
-                </dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Pricing</dt>
-                <dd class="text-white mt-0.5">
-                  Usage-based (ACUs) &middot; team &amp; enterprise plans
-                </dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Summary</dt>
-                <dd class="text-white mt-0.5 leading-relaxed">
-                  A teammate, not a tab. Devin ships PRs while your engineers
-                  sleep &mdash; and that is the line on the ROI spreadsheet.
-                </dd>
-              </div>
-            </dl>
+              Research
+              <span aria-hidden="true">&rarr;</span>
+            </button>
           </div>
-          <!-- Copilot -->
-          <div class="card p-6">
-            <div class="text-white text-xl font-bold">GitHub Copilot</div>
-            <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">
-              In-IDE AI Assistant
+          <div class="mt-4">
+            <div class="text-xs uppercase tracking-widest text-gray-500 mb-2">
+              Quick picks
             </div>
-            <dl class="mt-6 space-y-4 text-sm">
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Category</dt>
-                <dd class="text-gray-200 mt-0.5">Assistant (suggests as you type)</dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Autonomy</dt>
-                <dd class="text-gray-200 mt-0.5">
-                  <span
-                    class="inline-block bg-white/5 text-gray-300 px-2 py-0.5 rounded text-xs font-semibold"
-                    >Low &middot; line / block completions</span
-                  >
-                </dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">
-                  Best use case
-                </dt>
-                <dd class="text-gray-200 mt-0.5">
-                  Boilerplate, autocomplete, in-editor chat for the developer
-                  already typing.
-                </dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Pricing</dt>
-                <dd class="text-gray-200 mt-0.5">~$19&ndash;$39 / user / mo</dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Summary</dt>
-                <dd class="text-gray-200 mt-0.5 leading-relaxed">
-                  Makes existing engineers ~20% faster at typing. Still 100%
-                  human in the loop per keystroke.
-                </dd>
-              </div>
-            </dl>
-          </div>
-          <!-- Cursor -->
-          <div class="card p-6">
-            <div class="text-white text-xl font-bold">Cursor</div>
-            <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">
-              AI-native IDE
-            </div>
-            <dl class="mt-6 space-y-4 text-sm">
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Category</dt>
-                <dd class="text-gray-200 mt-0.5">Assistant + light agent (in-IDE)</dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Autonomy</dt>
-                <dd class="text-gray-200 mt-0.5">
-                  <span
-                    class="inline-block bg-white/5 text-gray-300 px-2 py-0.5 rounded text-xs font-semibold"
-                    >Medium &middot; multi-file edits</span
-                  >
-                </dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">
-                  Best use case
-                </dt>
-                <dd class="text-gray-200 mt-0.5">
-                  Individual devs refactoring in-repo with a human driving the
-                  editor.
-                </dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Pricing</dt>
-                <dd class="text-gray-200 mt-0.5">~$20&ndash;$40 / user / mo</dd>
-              </div>
-              <div>
-                <dt class="text-gray-400 text-xs uppercase tracking-wider">Summary</dt>
-                <dd class="text-gray-200 mt-0.5 leading-relaxed">
-                  A great editor with AI inside. Still requires a developer
-                  sitting in front of it to do anything.
-                </dd>
-              </div>
-            </dl>
+            <div id="researchChips" class="flex flex-wrap gap-2"></div>
           </div>
         </div>
+
         <div
-          class="mt-6 card p-5 border-accent-500/30 text-sm text-gray-300"
+          id="researchEmpty"
+          class="mt-6 card-inner p-6 text-center text-sm text-gray-500"
         >
-          <span class="text-accent-400 font-semibold">Why Devin wins for enterprise engineering teams:</span>
-          Copilot and Cursor sell productivity <em>per seat</em>; Devin sells
-          <em>finished work</em>. Enterprise leaders already own seat-based
-          assistants &mdash; what they don't own is an autonomous teammate that
-          clears the migration, CVE, and test-coverage backlog before Monday
-          standup. That is a board-level line item, not an IDE plugin.
+          Search a company above to pull a tailored pain-point map and live
+          articles from Hacker News &amp; public news sources.
+        </div>
+
+        <div id="researchResults" class="mt-6 hidden">
+          <div
+            class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5"
+          >
+            <div>
+              <div
+                class="text-[10px] uppercase tracking-[0.25em] text-accent-400 mb-1"
+              >
+                Research brief
+              </div>
+              <h3
+                id="researchCompany"
+                class="text-xl md:text-2xl font-bold text-white"
+              ></h3>
+              <div
+                id="researchVertical"
+                class="text-xs text-gray-400 mt-1 font-mono"
+              ></div>
+            </div>
+            <div
+              id="researchExternal"
+              class="flex flex-wrap gap-2 text-xs"
+            ></div>
+          </div>
+
+          <div class="grid md:grid-cols-5 gap-5">
+            <div class="md:col-span-3">
+              <div
+                class="text-[10px] uppercase tracking-[0.25em] text-gray-500 mb-3"
+              >
+                Potential pain points Devin can solve
+              </div>
+              <div id="researchPains" class="space-y-3"></div>
+              <div
+                id="researchPitch"
+                class="mt-4 card p-4 border-accent-500/30 text-sm text-gray-300 hidden"
+              ></div>
+            </div>
+            <div class="md:col-span-2">
+              <div
+                class="text-[10px] uppercase tracking-[0.25em] text-gray-500 mb-3 flex items-center gap-2"
+              >
+                <span>Live sources proving the pain</span>
+                <span
+                  id="researchNewsCount"
+                  class="text-accent-400 font-mono"
+                ></span>
+              </div>
+              <div id="researchNews" class="space-y-2 max-h-[520px] overflow-auto pr-1 scroll-fade"></div>
+              <div
+                id="researchNewsEmpty"
+                class="text-xs text-gray-500 mt-2 hidden"
+              ></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -777,168 +725,6 @@
           </p>
         </div>
         <div id="objectionsList" class="space-y-3"></div>
-      </section>
-
-      <!-- 30/60/90 -->
-      <section id="plan" class="max-w-7xl mx-auto px-6 py-10 pb-24">
-        <div class="mb-6">
-          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            06 &nbsp;//&nbsp; Ramp
-          </div>
-          <h2 class="text-2xl md:text-3xl font-bold text-white">
-            My 30 / 60 / 90 Day Plan
-          </h2>
-          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
-            First 90 days at Cognition &mdash; product mastery, vertical
-            penetration, and pipeline handoff.
-          </p>
-        </div>
-        <div class="relative">
-          <div
-            class="absolute left-5 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-400/60 via-accent-500/20 to-transparent"
-            aria-hidden="true"
-          ></div>
-
-          <!-- Phase 1 -->
-          <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-10">
-            <div class="md:text-right md:pr-10">
-              <div
-                class="inline-block text-xs uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-3 py-1 rounded-full"
-              >
-                Day 1 &ndash; 30
-              </div>
-              <h3 class="text-xl font-bold text-white mt-3">
-                Product Mastery &amp; First Outreach
-              </h3>
-              <p class="text-gray-400 text-sm mt-2 max-w-md md:ml-auto">
-                Ship my own PRs with Devin. Know the product cold before I ever
-                pitch it.
-              </p>
-            </div>
-            <div class="pl-10 md:pl-10 relative">
-              <span
-                class="tl-dot absolute left-3 md:-left-2 top-1 w-4 h-4 rounded-full bg-accent-400"
-              ></span>
-              <div class="card-inner p-5">
-                <ul class="space-y-2.5 text-sm text-gray-200">
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Complete Devin onboarding; personally run 10+ real sessions
-                    across migrations, CVE fixes, and test coverage.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Shadow 5 AE discovery calls; map ICP language, buyer titles,
-                    and current win themes.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Launch first outbound sequence to 100 entertainment &amp;
-                    media targets (my vertical).
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Build personal library of 3 POV emails, 2 Loom demos, and
-                    this Intelligence Hub as a leave-behind.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phase 2 -->
-          <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-10">
-            <div class="md:order-2 md:pl-10">
-              <div
-                class="inline-block text-xs uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-3 py-1 rounded-full"
-              >
-                Day 31 &ndash; 60
-              </div>
-              <h3 class="text-xl font-bold text-white mt-3">
-                Qualified Meetings &amp; Vertical Penetration
-              </h3>
-              <p class="text-gray-400 text-sm mt-2 max-w-md">
-                Convert activity into pipeline and own entertainment as my
-                differentiated lane.
-              </p>
-            </div>
-            <div class="md:order-1 md:text-right md:pr-10 pl-10 relative">
-              <span
-                class="tl-dot absolute left-3 md:left-auto md:-right-2 top-1 w-4 h-4 rounded-full bg-accent-400"
-              ></span>
-              <div class="card-inner p-5">
-                <ul class="space-y-2.5 text-sm text-gray-200 md:text-left">
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Deliver first cohort of qualified meetings (target: 8&ndash;12)
-                    to AE team.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Deepen entertainment vertical: 3 tailored POV decks for
-                    Netflix, Disney, Warner Bros Discovery.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Expand sequencing to financial services wedge (Barclays,
-                    Goldman, Lloyds) using compliance &amp; migration angles.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Host internal knowledge-share: "SDR playbook for media &amp;
-                    streaming accounts".
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phase 3 -->
-          <div class="relative grid md:grid-cols-2 gap-6 md:gap-12">
-            <div class="md:text-right md:pr-10">
-              <div
-                class="inline-block text-xs uppercase tracking-widest text-accent-400 bg-accent-500/10 border border-accent-500/30 px-3 py-1 rounded-full"
-              >
-                Day 61 &ndash; 90
-              </div>
-              <h3 class="text-xl font-bold text-white mt-3">
-                Pipeline Handoff &amp; GTM Contribution
-              </h3>
-              <p class="text-gray-400 text-sm mt-2 max-w-md md:ml-auto">
-                Move from individual contributor to vertical strategist.
-              </p>
-            </div>
-            <div class="pl-10 md:pl-10 relative">
-              <span
-                class="tl-dot absolute left-3 md:-left-2 top-1 w-4 h-4 rounded-full bg-accent-400"
-              ></span>
-              <div class="card-inner p-5">
-                <ul class="space-y-2.5 text-sm text-gray-200">
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    First pipeline handoff to AE &mdash; stage-2 opportunity
-                    with multi-threaded champion in place.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Present entertainment vertical strategy to GTM leadership:
-                    ICP map, messaging matrix, win themes.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Contribute 2 reusable sequences + objection responses to the
-                    SDR enablement library.
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-accent-400">&rarr;</span>
-                    Set quota-beating plan for Q+1 with named account list and
-                    targeted pipeline goal.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       <footer
@@ -1715,6 +1501,1022 @@
 
         renderCompanyFilter();
         loadAll();
+      })();
+    </script>
+
+    <!-- Account Researcher JS -->
+    <script>
+      (function () {
+        const $ = (id) => document.getElementById(id);
+
+        // ----- Curated pain-point library -----
+        // Each entry: { aliases, vertical, painPoints:[{title, signal, devinPlay}], pitch }
+        // devinPlay maps to concrete Devin benchmarks: 10x migrations, 20x CVE fixes, 60→90% test coverage.
+        const PAIN_LIBRARY = {
+          netflix: {
+            display: "Netflix",
+            aliases: ["netflix"],
+            vertical: "Streaming & Media",
+            pitch:
+              "Netflix ships platform software at the scale of a small nation. Devin is the teammate that clears their microservice migration backlog and keeps the CVE queue at zero without stealing engineer focus from live-ops.",
+            painPoints: [
+              {
+                title: "Legacy microservice estate & Java modernisation",
+                signal:
+                  "Hundreds of services built over 15+ years; migrations to GraphQL, Kotlin, and new platform abstractions take quarters of engineering time.",
+                devinPlay:
+                  "Devin runs migration sweeps 10x faster — opens PRs across service repos in parallel, follows the pattern, and hands reviewable diffs to platform engineers.",
+              },
+              {
+                title: "Live-streaming & encoder pipeline reliability",
+                signal:
+                  "Live events (sports, boxing, WWE) require flawless encoder + CDN pipelines. On-call burden is heavy and post-incident remediation backlogs up.",
+                devinPlay:
+                  "Devin executes post-incident action items autonomously — writes regression tests, patches the service, files the PR before the next game.",
+              },
+              {
+                title: "Security patching velocity",
+                signal:
+                  "Supply-chain CVEs across a sprawling Node/Java/Python estate. Security team files tickets faster than platform eng can close them.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster — takes the advisory, patches every affected repo, opens PRs against each.",
+              },
+              {
+                title: "Test coverage on platform SDKs",
+                signal:
+                  "Internal SDKs consumed by 1000+ engineers. A test gap on a core client becomes everyone's outage.",
+                devinPlay:
+                  "Devin lifts test coverage from ~60% to 90%+ — writes unit + integration tests, runs them, and ships the PR.",
+              },
+            ],
+          },
+          disney: {
+            display: "The Walt Disney Company",
+            aliases: ["disney", "walt disney", "dtci", "disney streaming"],
+            vertical: "Streaming & Media",
+            pitch:
+              "Disney is consolidating Disney+, Hulu, and ESPN onto a unified tech stack while defending a brand that cannot tolerate a security incident. Devin clears the migration and CVE backlog that is currently blocking that roadmap.",
+            painPoints: [
+              {
+                title: "Disney+ / Hulu / ESPN platform consolidation",
+                signal:
+                  "Three streaming stacks being merged under DTCI. Every service touched requires migration, config harmonisation, and regression tests.",
+                devinPlay:
+                  "Devin runs the cross-repo migration work 10x faster — zero-to-PR on pattern-based refactors while platform leads focus on architecture.",
+              },
+              {
+                title: "Post-breach security remediation pressure",
+                signal:
+                  "After recent high-profile data exposure incidents, the CISO org is running aggressive CVE + dependency SLAs on every eng team.",
+                devinPlay:
+                  "Devin resolves CVEs and dependency bumps 20x faster across the monorepo and polyrepos without pulling engineers off product work.",
+              },
+              {
+                title: "Legacy Parks & ESPN backend modernisation",
+                signal:
+                  "Park reservations, resort booking, ESPN stats backends — on slow-moving legacy stacks that block roadmap work.",
+                devinPlay:
+                  "Devin takes the modernisation spec, opens the PRs, and hands finished migrations back. Not a copilot — a teammate.",
+              },
+              {
+                title: "Compliance-ready test coverage for regulated flows",
+                signal:
+                  "Ticketing, payments, age-gating — regulated code paths under-tested.",
+                devinPlay:
+                  "Devin lifts coverage from ~60% to 90%+ on targeted modules with reviewable PRs per file.",
+              },
+            ],
+          },
+          wbd: {
+            display: "Warner Bros. Discovery",
+            aliases: [
+              "warner bros",
+              "warner bros discovery",
+              "warner brothers",
+              "wbd",
+              "hbo",
+              "max",
+              "hbo max",
+              "discovery",
+            ],
+            vertical: "Streaming & Media",
+            pitch:
+              "WBD is mid-merger-integration with brutal cost-cutting. Devin is the cheapest headcount that exists — it clears platform backlog without hiring and without another SaaS license per seat.",
+            painPoints: [
+              {
+                title: "HBO Max ↔ Discovery+ platform unification",
+                signal:
+                  "Ongoing merger of two full streaming stacks. Codebase debt and duplicated services are the single biggest drag on roadmap velocity.",
+                devinPlay:
+                  "Devin parallelises the migration PRs. Platform eng becomes the reviewer, not the typist.",
+              },
+              {
+                title: "Cost-cut mandate = fewer engineers, same roadmap",
+                signal:
+                  "Layoffs have cut capacity; leadership still expects ship velocity to hold.",
+                devinPlay:
+                  "Devin closes the capacity gap — finished PRs per month, no seat-based assistant theatre.",
+              },
+              {
+                title: "CVE backlog across regional streaming stacks",
+                signal:
+                  "Multi-region deployments, supply-chain CVEs every week, small appsec team.",
+                devinPlay:
+                  "Devin takes the advisory and patches every affected service 20x faster than a human sweep.",
+              },
+              {
+                title: "Legacy Turner / CNN systems",
+                signal:
+                  "News + cable backend systems built over decades, still critical for ad-supported tier.",
+                devinPlay:
+                  "Devin runs structured modernisation passes repo-by-repo with reviewable diffs.",
+              },
+            ],
+          },
+          spotify: {
+            display: "Spotify",
+            aliases: ["spotify"],
+            vertical: "Streaming & Media",
+            pitch:
+              "Spotify is famous for Backstage and for a platform team that is the envy of the industry — and the bottleneck of the company. Devin is how the platform team finally stops being a queue.",
+            painPoints: [
+              {
+                title: "Platform team is the company bottleneck",
+                signal:
+                  "Backstage is world-class, but every squad waits on platform eng for migrations, golden-path updates, and framework bumps.",
+                devinPlay:
+                  "Devin runs the migration/upgrade sweeps across every squad's repo in parallel — platform eng reviews instead of types.",
+              },
+              {
+                title: "Monolith-to-microservice modernisation fatigue",
+                signal:
+                  "Active decomposition work ongoing for years; engineers are tired of repetitive extract-and-rewrite work.",
+                devinPlay:
+                  "Devin does the repetitive extraction work 10x faster and lets senior engineers focus on service-design decisions.",
+              },
+              {
+                title: "Ads + podcast + audiobook stack unification",
+                signal:
+                  "Three revenue lines glued onto the music core. Every cross-cutting change requires 6+ repo touches.",
+                devinPlay:
+                  "Devin opens PRs across every affected repo in a single session, respecting each repo's conventions.",
+              },
+              {
+                title: "Test-coverage gaps on ML / recommendation services",
+                signal:
+                  "Recommendation and DJ personalisation services under-tested; regressions ship in A/B tests.",
+                devinPlay:
+                  "Devin pushes coverage from ~60% to 90%+ with unit + integration tests it runs before it submits.",
+              },
+            ],
+          },
+          paramount: {
+            display: "Paramount / Paramount+",
+            aliases: ["paramount", "paramount plus", "paramount+", "cbs", "pluto tv"],
+            vertical: "Streaming & Media",
+            pitch:
+              "Paramount is integrating Paramount+, Pluto TV, and CBS tech estates under cost pressure and now under Skydance. Devin is the way to finish the integration work without hiring.",
+            painPoints: [
+              {
+                title: "Paramount+ / Pluto TV / CBS stack integration",
+                signal:
+                  "Three legacy stacks being merged. Migration/refactor work blocks roadmap.",
+                devinPlay:
+                  "Devin runs pattern-based migrations across the three codebases in parallel.",
+              },
+              {
+                title: "Regulated media workflows (ad-tech, rights mgmt)",
+                signal:
+                  "Rights-management and ad-serving systems built over decades, hard to change safely.",
+                devinPlay:
+                  "Devin writes tests around the legacy surface first, then refactors against the tests.",
+              },
+              {
+                title: "CVE + dependency velocity",
+                signal:
+                  "Under-resourced appsec team facing weekly advisories across a sprawling estate.",
+                devinPlay:
+                  "Devin closes CVE tickets 20x faster — from advisory to PR without a human in the typing seat.",
+              },
+              {
+                title: "Test-coverage on streaming clients",
+                signal:
+                  "Web, TV, mobile streaming clients with inconsistent coverage.",
+                devinPlay:
+                  "Devin brings client coverage up to 90%+ with reviewable per-module PRs.",
+              },
+            ],
+          },
+          dazn: {
+            display: "DAZN",
+            aliases: ["dazn"],
+            vertical: "Live Sports Streaming",
+            pitch:
+              "DAZN's entire business model is live sports delivery. Every engineering minute lost to CVE triage or migration busywork is a minute that should be spent on latency and reliability.",
+            painPoints: [
+              {
+                title: "Low-latency live pipeline reliability",
+                signal:
+                  "Live sports tolerates zero buffering. Post-match post-mortems produce large action-item backlogs.",
+                devinPlay:
+                  "Devin closes post-incident action items autonomously — writes the regression test, fixes the service, ships the PR before next kickoff.",
+              },
+              {
+                title: "Multi-region regulatory compliance",
+                signal:
+                  "Rights + payments + regional restrictions vary per market; config drift is a constant risk.",
+                devinPlay:
+                  "Devin can sweep config repos and enforce invariants — opens a PR per regional override that breaks the pattern.",
+              },
+              {
+                title: "Platform bet modernisation",
+                signal:
+                  "Recent public talk of a platform rewrite (Rust / edge) — but the legacy stack still ships the revenue.",
+                devinPlay:
+                  "Devin runs migration passes on the old stack 10x faster so senior eng can focus on the new one.",
+              },
+              {
+                title: "CVE velocity across microservices",
+                signal:
+                  "Large Node/Java/Go estate, small appsec team, weekly CVEs.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster across every affected repo.",
+              },
+            ],
+          },
+          nbcu: {
+            display: "NBCUniversal / Peacock",
+            aliases: [
+              "nbc",
+              "nbcuniversal",
+              "nbc universal",
+              "peacock",
+              "comcast",
+            ],
+            vertical: "Streaming & Media",
+            pitch:
+              "Peacock is still chasing profitability and NBCU eng sits inside Comcast's scale constraints. Devin clears the migration + CVE backlog that is currently pulling engineers off monetisation work.",
+            painPoints: [
+              {
+                title: "Peacock ad-tech + monetisation roadmap",
+                signal:
+                  "Ad-supported tier is the monetisation bet; every migration away from it costs revenue.",
+                devinPlay:
+                  "Devin runs structured refactors + test coverage passes against the ad-tech stack without blocking feature teams.",
+              },
+              {
+                title: "Comcast inheritance: legacy cable + broadband backends",
+                signal:
+                  "Billing, entitlements, set-top-box services built over decades, still feeding Peacock auth.",
+                devinPlay:
+                  "Devin runs repo-by-repo modernisation sweeps with reviewable diffs and test coverage.",
+              },
+              {
+                title: "Live sports (Olympics, Sunday Night Football) reliability",
+                signal:
+                  "Tentpole live events are unforgiving. Post-mortem action lists are huge.",
+                devinPlay:
+                  "Devin executes post-incident remediation autonomously between events.",
+              },
+              {
+                title: "CVE + dependency maintenance",
+                signal:
+                  "Large estate, small appsec team, weekly advisories.",
+                devinPlay:
+                  "Devin patches CVEs 20x faster across every affected repo.",
+              },
+            ],
+          },
+          barclays: {
+            display: "Barclays",
+            aliases: ["barclays"],
+            vertical: "Banking & Financial Services",
+            pitch:
+              "Barclays is running one of the largest mainframe-to-cloud migrations in UK banking. Devin is the way to finish it without tripling the contractor bill.",
+            painPoints: [
+              {
+                title: "Mainframe-to-cloud migration (COBOL → Java/Kotlin)",
+                signal:
+                  "Multi-year programme; contractor-heavy; burn rate is extreme.",
+                devinPlay:
+                  "Devin performs deterministic pattern-based migrations 10x faster. Audit-ready PRs, not contractor hours.",
+              },
+              {
+                title: "Regulated CVE SLAs (PRA, FCA)",
+                signal:
+                  "CVE SLAs enforced by regulator; every advisory is a clock.",
+                devinPlay:
+                  "Devin closes CVE tickets 20x faster — from advisory to reviewable PR across every affected service.",
+              },
+              {
+                title: "Test coverage on audit-critical paths",
+                signal:
+                  "Payments, KYC, sanctions screening code must be audit-evidenced.",
+                devinPlay:
+                  "Devin lifts coverage to 90%+ with traceable per-module PRs that produce the audit trail for free.",
+              },
+              {
+                title: "Contractor cost / headcount freeze pressure",
+                signal:
+                  "Cost-cut mandates across group; net new hiring restricted.",
+                devinPlay:
+                  "Devin is a teammate priced as finished work — not a seat, not a contractor day rate.",
+              },
+            ],
+          },
+          "goldman sachs": {
+            display: "Goldman Sachs",
+            aliases: ["goldman", "goldman sachs", "gs"],
+            vertical: "Banking & Financial Services",
+            pitch:
+              "Goldman's tech org runs on Java + Slang + Python at scale with a brutal regulatory compliance surface. Devin is the autonomous teammate that modernises services and closes CVEs without stealing attention from revenue code.",
+            painPoints: [
+              {
+                title: "Slang + legacy Java modernisation",
+                signal:
+                  "Proprietary Slang stack and large Java estate. Ongoing multi-year migration to modern frameworks.",
+                devinPlay:
+                  "Devin runs pattern-based refactors 10x faster — unblocks platform teams from typing, frees them to review.",
+              },
+              {
+                title: "Regulated CVE + dependency SLAs",
+                signal:
+                  "Regulator-mandated CVE SLAs; appsec team is the bottleneck.",
+                devinPlay:
+                  "Devin closes CVEs 20x faster across the estate with reviewable PRs.",
+              },
+              {
+                title: "Audit-evidenced test coverage",
+                signal:
+                  "Risk + audit functions require demonstrable unit coverage on regulated flows.",
+                devinPlay:
+                  "Devin raises coverage to 90%+ with traceable PR history — audit evidence ships with the change.",
+              },
+              {
+                title: "Marquee / platform engineering bottleneck",
+                signal:
+                  "Internal platforms (Marquee, risk engines) serve every desk; every migration is a firm-wide event.",
+                devinPlay:
+                  "Devin runs the cross-repo migration sweep in parallel — platform team reviews instead of types.",
+              },
+            ],
+          },
+          lloyds: {
+            display: "Lloyds Banking Group",
+            aliases: ["lloyds", "lloyds banking", "lbg", "halifax"],
+            vertical: "Banking & Financial Services",
+            pitch:
+              "Lloyds is multi-year into a £3B tech transformation programme. Devin is the teammate that finally stops the migration backlog outrunning the delivery velocity.",
+            painPoints: [
+              {
+                title: "Core banking modernisation (mainframe → cloud)",
+                signal:
+                  "Multi-year programme; migration is the gating item for the rest of the roadmap.",
+                devinPlay:
+                  "Devin performs deterministic migration PRs 10x faster — senior eng designs, Devin executes.",
+              },
+              {
+                title: "Regulated CVE SLAs (PRA, FCA)",
+                signal:
+                  "Enforced CVE SLAs; advisories outrun the appsec team.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster across every affected service.",
+              },
+              {
+                title: "Audit-grade test coverage on payments & KYC",
+                signal:
+                  "Regulated code paths under-tested, audit trail expensive.",
+                devinPlay:
+                  "Devin brings coverage to 90%+ with per-module PRs that produce audit evidence.",
+              },
+              {
+                title: "Contractor-heavy delivery model",
+                signal:
+                  "Large day-rate contractor spend to offset hiring freeze.",
+                devinPlay:
+                  "Devin is finished-work pricing — competes directly with contractor day rates.",
+              },
+            ],
+          },
+          roblox: {
+            display: "Roblox",
+            aliases: ["roblox"],
+            vertical: "Gaming / Platform",
+            pitch:
+              "Roblox is an engine + platform + marketplace + moderation business on top of the same codebase. Devin is the teammate that keeps the migration + CVE + coverage queue from stealing engineer focus from the creator platform.",
+            painPoints: [
+              {
+                title: "C++ engine + Luau + platform service sprawl",
+                signal:
+                  "Engine, services, creator tools all living in the same estate; cross-cutting changes touch dozens of repos.",
+                devinPlay:
+                  "Devin opens PRs across every affected repo in parallel, respecting each repo's conventions.",
+              },
+              {
+                title: "Trust & safety / moderation infra velocity",
+                signal:
+                  "Moderation systems under constant regulatory and PR pressure.",
+                devinPlay:
+                  "Devin ships regression tests + refactors around moderation services fast — engineer reviews, does not type.",
+              },
+              {
+                title: "CVE velocity on a large Node/Go/C++ estate",
+                signal:
+                  "Weekly advisories across services.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster with per-repo PRs.",
+              },
+              {
+                title: "Test coverage on creator-facing APIs",
+                signal:
+                  "Creator APIs are the product — regressions cost creators revenue.",
+                devinPlay:
+                  "Devin pushes coverage to 90%+ with reviewable per-module PRs.",
+              },
+            ],
+          },
+        };
+
+        // ----- Vertical fallback profiles -----
+        const VERTICAL_FALLBACKS = {
+          "Streaming & Media": {
+            pitch:
+              "Streaming engineering orgs are all running the same three backlogs: legacy monolith decomposition, CVE triage, and live-ops post-incident actions. Devin clears all three without another seat-based license.",
+            painPoints: [
+              {
+                title: "Legacy monolith / microservice migration drag",
+                signal:
+                  "Years of platform code being decomposed; migration work eats senior engineer capacity.",
+                devinPlay:
+                  "Devin runs migration passes 10x faster with reviewable diffs per repo.",
+              },
+              {
+                title: "Live-ops reliability + post-incident remediation",
+                signal:
+                  "Live events produce large action-item backlogs that rarely get closed.",
+                devinPlay:
+                  "Devin executes action items autonomously between events.",
+              },
+              {
+                title: "Supply-chain CVE velocity",
+                signal:
+                  "Appsec team smaller than the advisory rate.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster with per-service PRs.",
+              },
+              {
+                title: "Test-coverage gaps on core SDKs / services",
+                signal:
+                  "Coverage ~60% across critical modules; platform team too busy for uplift work.",
+                devinPlay:
+                  "Devin brings coverage to 90%+ with unit + integration tests it runs before it submits.",
+              },
+            ],
+          },
+          "Banking & Financial Services": {
+            pitch:
+              "Every major bank is running mainframe-to-cloud migrations under regulatory CVE SLAs with contractor-heavy teams. Devin is the finished-work teammate that beats both the migration clock and the day-rate cost model.",
+            painPoints: [
+              {
+                title: "Mainframe / legacy-core modernisation",
+                signal:
+                  "Multi-year migration programmes; contractor-heavy; burn rate is extreme.",
+                devinPlay:
+                  "Devin performs deterministic migration PRs 10x faster — audit-ready diffs, not contractor hours.",
+              },
+              {
+                title: "Regulated CVE + dependency SLAs",
+                signal:
+                  "Regulator-enforced SLAs on security patching; appsec backlog grows faster than it closes.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster across every affected service.",
+              },
+              {
+                title: "Audit-grade test coverage on regulated flows",
+                signal:
+                  "Payments, KYC, sanctions, surveillance — auditable unit + integration coverage required.",
+                devinPlay:
+                  "Devin lifts coverage to 90%+ with per-module PRs that produce audit evidence.",
+              },
+              {
+                title: "Headcount freeze + contractor cost pressure",
+                signal:
+                  "Cost-cut mandates reduce hiring; delivery still expected to hold.",
+                devinPlay:
+                  "Devin is priced as finished work — directly competes with contractor day rates.",
+              },
+            ],
+          },
+          "Gaming / Platform": {
+            pitch:
+              "Games platforms live and die by live-ops reliability, anti-cheat security, and engine migration velocity. Devin is the teammate that closes the backlog around all three without dragging senior engineers off the creative roadmap.",
+            painPoints: [
+              {
+                title: "Engine / client migration drag",
+                signal:
+                  "Unity/Unreal/engine version bumps touch every gameplay team; slow to coordinate.",
+                devinPlay:
+                  "Devin runs migration sweeps across every affected repo 10x faster.",
+              },
+              {
+                title: "Anti-cheat / security response velocity",
+                signal:
+                  "Exploit disclosures and CVEs outrun the appsec team.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster — advisory to PR without a human typing the patch.",
+              },
+              {
+                title: "Live-ops post-incident remediation",
+                signal:
+                  "Post-match / post-launch action items backlog indefinitely.",
+                devinPlay:
+                  "Devin closes action items autonomously between releases.",
+              },
+              {
+                title: "Test coverage on creator / player APIs",
+                signal:
+                  "Externally-consumed APIs under-tested; regressions cost creators/players money.",
+                devinPlay:
+                  "Devin pushes coverage to 90%+ with reviewable PRs.",
+              },
+            ],
+          },
+          "Tech / SaaS": {
+            pitch:
+              "Fast-growing tech orgs all hit the same wall: platform team becomes the bottleneck, CVE backlog grows, test coverage lags. Devin is the teammate that clears all three without another $30/seat license.",
+            painPoints: [
+              {
+                title: "Platform team bottleneck",
+                signal:
+                  "Every squad waits on platform eng for migrations, framework bumps, golden-path updates.",
+                devinPlay:
+                  "Devin runs migration/upgrade sweeps across every squad's repo in parallel — platform eng reviews, not types.",
+              },
+              {
+                title: "Supply-chain CVE backlog",
+                signal:
+                  "Dependabot PRs pile up; nobody has time to review and land them.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster — it reads the advisory, patches, tests, and submits.",
+              },
+              {
+                title: "Test-coverage gaps blocking refactors",
+                signal:
+                  "Teams want to refactor but coverage is too low to trust the change.",
+                devinPlay:
+                  "Devin raises coverage to 90%+ first, then runs the refactor safely.",
+              },
+              {
+                title: "Tech-debt backlog older than the company",
+                signal:
+                  "Every sprint has \"tech debt\" on the backlog; it never ships.",
+                devinPlay:
+                  "Devin is tech-debt ships-at-last — it takes the ticket and returns the PR.",
+              },
+            ],
+          },
+          "Retail / E-commerce": {
+            pitch:
+              "Retail engineering orgs run on legacy checkout/inventory systems with seasonal reliability clocks and weekly fraud/security incidents. Devin is the teammate that keeps the migration + CVE + coverage queue from stealing focus off peak-season prep.",
+            painPoints: [
+              {
+                title: "Checkout / cart reliability",
+                signal:
+                  "Peak-season outages are existential; post-incident backlogs rarely close.",
+                devinPlay:
+                  "Devin closes post-incident action items autonomously before the next peak.",
+              },
+              {
+                title: "Inventory / OMS modernisation",
+                signal:
+                  "Legacy inventory + order management systems block omni-channel roadmap.",
+                devinPlay:
+                  "Devin runs modernisation passes repo-by-repo with reviewable diffs.",
+              },
+              {
+                title: "Fraud / appsec velocity",
+                signal:
+                  "CVE + fraud-pattern work outpaces appsec capacity.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster and implements fraud-rule updates across services in parallel.",
+              },
+              {
+                title: "Test coverage on payment + tax flows",
+                signal:
+                  "Regulated flows under-tested; compliance pressure rising.",
+                devinPlay:
+                  "Devin raises coverage to 90%+ with per-module PRs.",
+              },
+            ],
+          },
+          Default: {
+            pitch:
+              "Most engineering orgs lose 30–50% of capacity to migration work, CVE remediation, and low test coverage. Devin is the autonomous teammate that clears all three — priced as finished work, not a per-seat license.",
+            painPoints: [
+              {
+                title: "Migration & modernisation backlog",
+                signal:
+                  "Framework, language, and platform migrations that never finish.",
+                devinPlay:
+                  "Devin runs migration passes 10x faster with reviewable diffs.",
+              },
+              {
+                title: "CVE / dependency remediation velocity",
+                signal:
+                  "Advisories outrun the appsec team.",
+                devinPlay:
+                  "Devin resolves CVEs 20x faster across every affected repo.",
+              },
+              {
+                title: "Test coverage under 70%",
+                signal:
+                  "Coverage gaps block confident refactors and slow incident response.",
+                devinPlay:
+                  "Devin brings coverage from ~60% to 90%+ with per-module PRs.",
+              },
+              {
+                title: "Platform team bottleneck",
+                signal:
+                  "Every squad waits on platform eng for golden-path updates.",
+                devinPlay:
+                  "Devin runs the platform-driven refactors across every consumer repo in parallel.",
+              },
+            ],
+          },
+        };
+
+        // ----- Vertical classifier -----
+        const VERTICAL_KEYWORDS = [
+          {
+            vertical: "Streaming & Media",
+            kw: [
+              "tv",
+              "stream",
+              "media",
+              "entertainment",
+              "broadcast",
+              "studio",
+              "pictures",
+              "films",
+              "music",
+              "audio",
+              "video",
+              "sports network",
+            ],
+          },
+          {
+            vertical: "Banking & Financial Services",
+            kw: [
+              "bank",
+              "capital",
+              "financial",
+              "finance",
+              "sachs",
+              "morgan",
+              "wealth",
+              "trust",
+              "insurance",
+              "securities",
+              "investments",
+              "credit",
+            ],
+          },
+          {
+            vertical: "Gaming / Platform",
+            kw: [
+              "game",
+              "games",
+              "studio",
+              "interactive",
+              "roblox",
+              "riot",
+              "epic",
+              "blizzard",
+              "nintendo",
+              "playstation",
+              "xbox",
+            ],
+          },
+          {
+            vertical: "Retail / E-commerce",
+            kw: [
+              "retail",
+              "shop",
+              "store",
+              "commerce",
+              "walmart",
+              "target",
+              "costco",
+              "amazon retail",
+              "ecommerce",
+            ],
+          },
+          {
+            vertical: "Tech / SaaS",
+            kw: [
+              "tech",
+              "software",
+              "saas",
+              "cloud",
+              "platform",
+              "ai",
+              "labs",
+              "systems",
+              "data",
+            ],
+          },
+        ];
+
+        function classifyVertical(name) {
+          const n = (name || "").toLowerCase();
+          for (const row of VERTICAL_KEYWORDS) {
+            if (row.kw.some((k) => n.includes(k))) return row.vertical;
+          }
+          return "Default";
+        }
+
+        function resolveEntry(query) {
+          const q = (query || "").trim().toLowerCase();
+          if (!q) return null;
+          // direct / alias match
+          for (const key of Object.keys(PAIN_LIBRARY)) {
+            const entry = PAIN_LIBRARY[key];
+            if (entry.aliases.some((a) => q === a || q.includes(a))) {
+              return { ...entry, matchKind: "curated" };
+            }
+          }
+          // fallback: infer by vertical
+          const vertical = classifyVertical(q);
+          const fb = VERTICAL_FALLBACKS[vertical] || VERTICAL_FALLBACKS.Default;
+          const display = q
+            .split(/\s+/)
+            .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+            .join(" ");
+          return {
+            display,
+            vertical,
+            pitch: fb.pitch,
+            painPoints: fb.painPoints,
+            matchKind: "inferred",
+          };
+        }
+
+        // ----- Live news fetch (HN Algolia) -----
+        async function fetchCompanyNews(query) {
+          const q = encodeURIComponent(query);
+          const url = `https://hn.algolia.com/api/v1/search_by_date?query=${q}&tags=story&hitsPerPage=24`;
+          try {
+            const r = await fetch(url);
+            if (!r.ok) throw new Error("HN fetch failed");
+            const data = await r.json();
+            const needle = query.trim().toLowerCase();
+            const hits = (data.hits || [])
+              .filter((h) => {
+                const hay = ((h.title || "") + " " + (h.story_text || ""))
+                  .toLowerCase();
+                // require the company to actually appear in the text
+                if (needle.length <= 3) return false;
+                if (needle.length <= 6) {
+                  const re = new RegExp(
+                    "\\b" +
+                      needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") +
+                      "\\b"
+                  );
+                  return re.test(hay);
+                }
+                return hay.includes(needle);
+              })
+              .map((h) => ({
+                title: h.title || h.story_title || "(untitled)",
+                url:
+                  h.url ||
+                  (h.story_id
+                    ? `https://news.ycombinator.com/item?id=${h.story_id}`
+                    : `https://news.ycombinator.com/item?id=${h.objectID}`),
+                source: h.url
+                  ? new URL(h.url).hostname.replace(/^www\./, "")
+                  : "news.ycombinator.com",
+                points: h.points || 0,
+                comments: h.num_comments || 0,
+                date: h.created_at,
+              }))
+              .slice(0, 14);
+            return hits;
+          } catch (e) {
+            return [];
+          }
+        }
+
+        // ----- Render helpers -----
+        function fmtDate(iso) {
+          if (!iso) return "";
+          const d = new Date(iso);
+          if (isNaN(d)) return "";
+          return d.toISOString().slice(0, 10);
+        }
+
+        function escapeHtml(s) {
+          return String(s || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+        }
+
+        function renderResults(entry, news) {
+          $("researchEmpty").classList.add("hidden");
+          $("researchResults").classList.remove("hidden");
+
+          $("researchCompany").textContent = entry.display;
+          $("researchVertical").innerHTML =
+            `<span class="text-accent-400">&gt;</span> ${escapeHtml(
+              entry.vertical
+            )} &middot; ${
+              entry.matchKind === "curated"
+                ? "curated pain-point pack"
+                : "inferred pain-point pack"
+            }`;
+
+          // External research deep-links — always available
+          const q = encodeURIComponent(
+            entry.display + " engineering"
+          );
+          const qNews = encodeURIComponent(
+            entry.display + " engineering OR migration OR security OR CVE"
+          );
+          const deepLinks = [
+            {
+              label: "Google News",
+              href: `https://news.google.com/search?q=${qNews}`,
+            },
+            {
+              label: "Hacker News",
+              href: `https://hn.algolia.com/?q=${encodeURIComponent(entry.display)}`,
+            },
+            {
+              label: "LinkedIn People",
+              href: `https://www.linkedin.com/search/results/people/?keywords=${q}`,
+            },
+            {
+              label: "LinkedIn Jobs",
+              href: `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
+                entry.display + " software engineer"
+              )}`,
+            },
+            {
+              label: "Levels.fyi",
+              href: `https://www.levels.fyi/?search=${encodeURIComponent(
+                entry.display
+              )}`,
+            },
+          ];
+          $("researchExternal").innerHTML = deepLinks
+            .map(
+              (l) =>
+                `<a href="${l.href}" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-full bg-navy-900/70 border border-white/10 hover:border-accent-400 hover:text-white text-gray-300 transition">${l.label} &#8599;</a>`
+            )
+            .join("");
+
+          // Pain points
+          $("researchPains").innerHTML = entry.painPoints
+            .map(
+              (p, i) => `
+              <div class="card-inner p-4">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-start gap-3 min-w-0">
+                    <span class="text-[10px] font-mono text-accent-400 mt-0.5">P${String(
+                      i + 1
+                    ).padStart(2, "0")}</span>
+                    <div class="min-w-0">
+                      <div class="text-white font-semibold text-sm">${escapeHtml(
+                        p.title
+                      )}</div>
+                      <div class="text-xs text-gray-400 mt-1">${escapeHtml(
+                        p.signal
+                      )}</div>
+                      <div class="text-xs text-accent-400/90 mt-2">
+                        <span class="text-[10px] uppercase tracking-widest text-gray-500 mr-1">Devin play:</span>
+                        ${escapeHtml(p.devinPlay)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>`
+            )
+            .join("");
+
+          // Pitch
+          if (entry.pitch) {
+            $("researchPitch").classList.remove("hidden");
+            $("researchPitch").innerHTML =
+              `<span class="text-accent-400 font-semibold">Why Devin for ${escapeHtml(
+                entry.display
+              )}:</span> ${escapeHtml(entry.pitch)}`;
+          } else {
+            $("researchPitch").classList.add("hidden");
+          }
+
+          // News
+          const newsEl = $("researchNews");
+          const emptyEl = $("researchNewsEmpty");
+          $("researchNewsCount").textContent = news.length
+            ? `${news.length} hit${news.length === 1 ? "" : "s"}`
+            : "";
+          if (!news.length) {
+            newsEl.innerHTML = "";
+            emptyEl.classList.remove("hidden");
+            emptyEl.innerHTML = `No Hacker News articles mentioning <span class="text-gray-300">${escapeHtml(
+              entry.display
+            )}</span> yet &mdash; try the Google News and LinkedIn links above for more signal.`;
+          } else {
+            emptyEl.classList.add("hidden");
+            newsEl.innerHTML = news
+              .map(
+                (n) => `
+                <a href="${
+                  n.url
+                }" target="_blank" rel="noopener" class="block card-inner p-3 hover:border-accent-400 transition">
+                  <div class="text-sm text-white leading-snug">${escapeHtml(
+                    n.title
+                  )}</div>
+                  <div class="text-[11px] text-gray-500 font-mono mt-1 flex items-center gap-2 flex-wrap">
+                    <span class="text-accent-400/80">${escapeHtml(
+                      n.source
+                    )}</span>
+                    <span>&middot;</span>
+                    <span>${fmtDate(n.date)}</span>
+                    <span>&middot;</span>
+                    <span>&#9650; ${n.points} &middot; &#128172; ${n.comments}</span>
+                  </div>
+                </a>`
+              )
+              .join("");
+          }
+        }
+
+        function setLoading(isLoading) {
+          const btn = $("researchBtn");
+          btn.disabled = isLoading;
+          btn.innerHTML = isLoading
+            ? '<span class="animate-pulse">Researching...</span>'
+            : 'Research <span aria-hidden="true">&rarr;</span>';
+        }
+
+        async function runResearch(query) {
+          const q = (query || "").trim();
+          if (!q) return;
+          const entry = resolveEntry(q);
+          if (!entry) return;
+          setLoading(true);
+          // render pain points immediately so user sees progress, then overwrite with news
+          renderResults(entry, []);
+          $("researchNews").innerHTML =
+            '<div class="card-inner p-3 text-xs text-gray-500 animate-pulse">Pulling live articles&hellip;</div>';
+          const news = await fetchCompanyNews(q);
+          renderResults(entry, news);
+          setLoading(false);
+        }
+
+        // ----- Quick-pick chips -----
+        const CHIPS = [
+          "Netflix",
+          "Disney",
+          "Spotify",
+          "Warner Bros Discovery",
+          "Paramount",
+          "DAZN",
+          "NBCUniversal",
+          "Barclays",
+          "Goldman Sachs",
+          "Lloyds",
+          "Roblox",
+        ];
+        $("researchChips").innerHTML = CHIPS.map(
+          (c) =>
+            `<button type="button" data-company="${escapeHtml(
+              c
+            )}" class="research-chip px-3 py-1.5 rounded-full bg-navy-900/70 border border-white/10 hover:border-accent-400 hover:text-white text-gray-300 text-xs transition">${escapeHtml(
+              c
+            )}</button>`
+        ).join("");
+        $("researchChips").addEventListener("click", (e) => {
+          const btn = e.target.closest(".research-chip");
+          if (!btn) return;
+          const company = btn.getAttribute("data-company");
+          $("researchInput").value = company;
+          runResearch(company);
+        });
+
+        $("researchBtn").addEventListener("click", () => {
+          runResearch($("researchInput").value);
+        });
+        $("researchInput").addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            runResearch($("researchInput").value);
+          }
+        });
       })();
     </script>
   </body>
