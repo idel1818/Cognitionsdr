@@ -192,10 +192,11 @@
           </div>
           <nav class="hidden md:flex items-center gap-6 text-sm text-gray-400">
             <a href="#roi" class="hover:text-white transition">ROI</a>
-            <a href="#accounts" class="hover:text-white transition">Accounts</a>
-            <a href="#terminal" class="hover:text-white transition">Terminal</a>
-            <a href="#researcher" class="hover:text-white transition">Researcher</a>
+            <a href="#intelligence" data-intel-link="accounts" class="hover:text-white transition">Accounts</a>
+            <a href="#intelligence" data-intel-link="terminal" class="hover:text-white transition">Terminal</a>
+            <a href="#intelligence" data-intel-link="researcher" class="hover:text-white transition">Researcher</a>
             <a href="#objections" class="hover:text-white transition">Objections</a>
+            <a href="#askdevin-open" id="askDevinNavLink" class="hover:text-white transition text-accent-400">Ask Devin</a>
           </nav>
           <div class="hidden md:flex items-center gap-2 text-xs text-gray-400">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -440,21 +441,60 @@
         </div>
       </section>
 
-      <!-- Target Accounts -->
-      <section id="accounts" class="max-w-7xl mx-auto px-6 py-10">
+      <!-- Account Intelligence (combined: Accounts + Terminal + Researcher) -->
+      <section id="intelligence" class="max-w-7xl mx-auto px-6 py-10">
         <div class="mb-6">
           <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            02 &nbsp;//&nbsp; Pipeline
+            02 &nbsp;//&nbsp; Intelligence
           </div>
           <h2 class="text-2xl md:text-3xl font-bold text-white">
-            Target Account Intelligence
+            Account Intelligence
           </h2>
           <p class="text-gray-400 text-sm mt-2 max-w-2xl">
-            Top 10 entertainment, media &amp; financial services accounts —
+            Top accounts, a live sector terminal, and a per-company deep-dive
+            &mdash; one workspace for everything I need on a call.
+          </p>
+        </div>
+
+        <!-- Intelligence tab bar -->
+        <div
+          id="intelTabs"
+          class="flex flex-wrap gap-2 mb-5 border-b border-white/5 pb-3"
+          role="tablist"
+        >
+          <button
+            data-intel-tab="accounts"
+            class="intel-tab px-4 py-2 text-sm rounded-lg border border-accent-500/40 bg-accent-500/10 text-white font-semibold"
+            role="tab"
+            aria-selected="true"
+          >
+            <span class="text-accent-400 font-mono mr-2">01</span>Target Accounts
+          </button>
+          <button
+            data-intel-tab="terminal"
+            class="intel-tab px-4 py-2 text-sm rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-accent-400/40 transition"
+            role="tab"
+            aria-selected="false"
+          >
+            <span class="text-accent-400 font-mono mr-2">02</span>Sector Terminal
+          </button>
+          <button
+            data-intel-tab="researcher"
+            class="intel-tab px-4 py-2 text-sm rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-accent-400/40 transition"
+            role="tab"
+            aria-selected="false"
+          >
+            <span class="text-accent-400 font-mono mr-2">03</span>Account Researcher
+          </button>
+        </div>
+
+        <!-- Panel: Target Accounts -->
+        <div data-intel-panel="accounts">
+          <p class="text-gray-400 text-sm mb-4 max-w-2xl">
+            Top 10 entertainment, media &amp; financial services accounts &mdash;
             each with a concrete pain point, Devin use case, and an opener I can
             send in the next sequence.
           </p>
-        </div>
         <div class="card overflow-hidden">
           <div class="overflow-x-auto scroll-fade">
             <table class="w-full text-sm text-left">
@@ -473,25 +513,17 @@
             </table>
           </div>
         </div>
-      </section>
+        </div>
+        <!-- /Panel: Target Accounts -->
 
-      <!-- Sector Terminal -->
-      <section id="terminal" class="max-w-7xl mx-auto px-6 py-10">
-        <div class="mb-6">
-          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            03 &nbsp;//&nbsp; Live Intel
-          </div>
-          <h2 class="text-2xl md:text-3xl font-bold text-white">
-            Sector Terminal
-          </h2>
-          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+        <!-- Panel: Sector Terminal -->
+        <div data-intel-panel="terminal" hidden>
+          <p class="text-gray-400 text-sm mb-4 max-w-2xl">
             A BD-desk view of entertainment &amp; media engineering &mdash;
             engineering news pulled live from Hacker News, and open
             engineering roles pulled live from public company career APIs.
             What's shipping, who's hiring, where the budget is.
           </p>
-        </div>
-
         <div
           class="rounded-xl border border-accent-500/25 bg-[#05080F] overflow-hidden shadow-glow"
         >
@@ -598,23 +630,15 @@
             >
           </div>
         </div>
-      </section>
+        </div>
+        <!-- /Panel: Sector Terminal -->
 
-      <!-- Account Researcher -->
-      <section id="researcher" class="max-w-7xl mx-auto px-6 py-10">
-        <div class="mb-6">
-          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            04 &nbsp;//&nbsp; Deep Dive
-          </div>
-          <h2 class="text-2xl md:text-3xl font-bold text-white">
-            Account Researcher
-          </h2>
-          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+        <!-- Panel: Account Researcher -->
+        <div data-intel-panel="researcher" hidden>
+          <p class="text-gray-400 text-sm mb-4 max-w-2xl">
             Search any company &mdash; get tailored Devin pain points and live
             news articles that prove those pains are real.
           </p>
-        </div>
-
         <div class="card p-5 md:p-6">
           <label
             for="researchInput"
@@ -709,13 +733,15 @@
             </div>
           </div>
         </div>
+        </div>
+        <!-- /Panel: Account Researcher -->
       </section>
 
       <!-- Objections -->
       <section id="objections" class="max-w-7xl mx-auto px-6 py-10">
         <div class="mb-6">
           <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            05 &nbsp;//&nbsp; Sales Plays
+            03 &nbsp;//&nbsp; Sales Plays
           </div>
           <h2 class="text-2xl md:text-3xl font-bold text-white">
             Objection Handler
@@ -2517,6 +2543,719 @@
             runResearch($("researchInput").value);
           }
         });
+      })();
+    </script>
+
+    <!-- Intelligence tab switcher -->
+    <script>
+      (function () {
+        const tabs = document.querySelectorAll(".intel-tab");
+        const panels = document.querySelectorAll("[data-intel-panel]");
+
+        function setTab(name) {
+          tabs.forEach((t) => {
+            const active = t.getAttribute("data-intel-tab") === name;
+            t.setAttribute("aria-selected", active ? "true" : "false");
+            if (active) {
+              t.classList.add(
+                "border-accent-500/40",
+                "bg-accent-500/10",
+                "text-white",
+                "font-semibold"
+              );
+              t.classList.remove("border-white/10", "text-gray-300");
+            } else {
+              t.classList.remove(
+                "border-accent-500/40",
+                "bg-accent-500/10",
+                "text-white",
+                "font-semibold"
+              );
+              t.classList.add("border-white/10", "text-gray-300");
+            }
+          });
+          panels.forEach((p) => {
+            if (p.getAttribute("data-intel-panel") === name) {
+              p.removeAttribute("hidden");
+            } else {
+              p.setAttribute("hidden", "");
+            }
+          });
+        }
+
+        tabs.forEach((t) =>
+          t.addEventListener("click", () =>
+            setTab(t.getAttribute("data-intel-tab"))
+          )
+        );
+
+        // Header nav links switch the tab when jumping to #intelligence
+        document.querySelectorAll("[data-intel-link]").forEach((a) => {
+          a.addEventListener("click", () => {
+            setTab(a.getAttribute("data-intel-link"));
+          });
+        });
+      })();
+    </script>
+
+    <!-- Ask Devin: floating chat widget -->
+    <style>
+      #askDevinLauncher {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 60;
+      }
+      #askDevinPanel {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: min(420px, calc(100vw - 32px));
+        height: min(620px, calc(100vh - 40px));
+        z-index: 70;
+        display: none;
+        flex-direction: column;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 26, 58, 0.98),
+          rgba(6, 11, 26, 0.98)
+        );
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 1rem;
+        box-shadow:
+          0 20px 60px -20px rgba(0, 0, 0, 0.8),
+          0 0 40px -10px rgba(59, 130, 246, 0.45);
+        overflow: hidden;
+      }
+      #askDevinPanel.open {
+        display: flex;
+      }
+      .ask-bubble {
+        max-width: 85%;
+        border-radius: 0.85rem;
+        padding: 0.65rem 0.85rem;
+        font-size: 13px;
+        line-height: 1.45;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .ask-bubble.user {
+        background: rgba(59, 130, 246, 0.18);
+        border: 1px solid rgba(96, 165, 250, 0.35);
+        color: #ffffff;
+        align-self: flex-end;
+      }
+      .ask-bubble.bot {
+        background: rgba(6, 11, 26, 0.85);
+        border: 1px solid rgba(96, 165, 250, 0.15);
+        color: #e5e7eb;
+        align-self: flex-start;
+      }
+      .ask-bubble .label {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #60a5fa;
+        margin-bottom: 4px;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+      }
+      .ask-chip {
+        display: inline-block;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(96, 165, 250, 0.2);
+        color: #cbd5e1;
+        background: rgba(6, 11, 26, 0.6);
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+      .ask-chip:hover {
+        border-color: rgba(96, 165, 250, 0.6);
+        color: #ffffff;
+      }
+    </style>
+
+    <button
+      id="askDevinLauncher"
+      class="group flex items-center gap-2 px-4 py-3 rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold shadow-glow transition"
+      title="Ask Devin — SDR playbook assistant"
+    >
+      <span
+        class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"
+        aria-hidden="true"
+      ></span>
+      Ask Devin
+    </button>
+
+    <div id="askDevinPanel" role="dialog" aria-label="Ask Devin">
+      <div
+        class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-gradient-to-r from-navy-800 to-navy-900"
+      >
+        <div class="flex items-center gap-2">
+          <span
+            class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
+            aria-hidden="true"
+          ></span>
+          <div>
+            <div class="text-white text-sm font-semibold leading-tight">
+              Ask Devin
+            </div>
+            <div
+              class="text-[10px] uppercase tracking-widest text-accent-400 font-mono"
+            >
+              SDR playbook assistant
+            </div>
+          </div>
+        </div>
+        <button
+          id="askDevinClose"
+          class="text-gray-400 hover:text-white transition text-lg leading-none"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+      </div>
+      <div
+        id="askDevinMessages"
+        class="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 scroll-fade"
+      ></div>
+      <div class="px-4 pt-1 pb-2">
+        <div
+          class="text-[10px] uppercase tracking-widest text-gray-500 mb-2"
+        >
+          Try
+        </div>
+        <div id="askDevinChips" class="flex flex-wrap gap-2 mb-3"></div>
+      </div>
+      <form
+        id="askDevinForm"
+        class="px-3 pb-3 pt-1 border-t border-white/5 bg-navy-950/60"
+      >
+        <div class="flex gap-2">
+          <input
+            id="askDevinInput"
+            type="text"
+            autocomplete="off"
+            placeholder="Ask a sales or product question..."
+            class="flex-1 bg-navy-950 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-accent-400"
+          />
+          <button
+            type="submit"
+            class="px-4 py-2 rounded-lg bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold transition"
+          >
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Ask Devin JS -->
+    <script>
+      (function () {
+        const $ = (id) => document.getElementById(id);
+        const launcher = $("askDevinLauncher");
+        const panel = $("askDevinPanel");
+        const closeBtn = $("askDevinClose");
+        const msgs = $("askDevinMessages");
+        const form = $("askDevinForm");
+        const input = $("askDevinInput");
+        const chipsEl = $("askDevinChips");
+        const navLink = $("askDevinNavLink");
+
+        // ===== Curated SDR Q&A library =====
+        // Each entry: keywords (lowercase tokens any of which match), answer (markdown-lite).
+        // Retrieval: score = sum of keyword hits in query tokens; tie-break by specificity.
+        const QA = [
+          {
+            id: "what-is-devin",
+            keywords: [
+              "what is devin",
+              "explain devin",
+              "what does devin do",
+              "who is devin",
+              "elevator",
+              "one-liner",
+              "one liner",
+              "pitch",
+            ],
+            answer:
+              "Devin is the first autonomous AI software engineer. You give it a task in plain English (a ticket, a migration spec, a CVE) and Devin plans the work, writes the code, runs the tests, and opens a reviewable PR. It is not a copilot or an IDE autocomplete — it is a teammate you can assign work to.",
+          },
+          {
+            id: "copilot-compare",
+            keywords: [
+              "copilot",
+              "github copilot",
+              "vs copilot",
+              "how is devin different from copilot",
+              "cursor",
+              "vs cursor",
+              "assistant",
+            ],
+            answer:
+              "Copilot and Cursor are IDE assistants — they finish your next line of code while you are typing. Devin is an agent — you hand it a task and walk away; it comes back with a PR. The honest framing on a call: \"You keep Copilot for individual productivity; Devin is the teammate who closes tickets while your engineers sleep.\" They are complements, not substitutes.",
+          },
+          {
+            id: "pricing",
+            keywords: [
+              "price",
+              "pricing",
+              "cost",
+              "how much",
+              "contract",
+              "license",
+              "seats",
+              "per seat",
+            ],
+            answer:
+              "Devin is priced as finished engineering work, not per seat. That reframes the conversation: you are buying closed tickets, migrations, and CVE remediations — not a $30/month IDE add-on for every dev. For exact numbers, routing to AE; the BD talk-track is \"price per PR, not per person.\"",
+          },
+          {
+            id: "roi",
+            keywords: [
+              "roi",
+              "return",
+              "business case",
+              "cost savings",
+              "savings",
+              "value",
+              "hours",
+              "benchmark",
+              "benchmarks",
+              "10x",
+              "20x",
+            ],
+            answer:
+              "Concrete anchors to cite:\n• 10× faster on migration work\n• 20× faster on security vulnerability fixes\n• Test coverage lifted from ~60% to 90%\n\nPlug those into the ROI Calculator in this hub with the prospect's team size and hourly rate — you get hours-saved/mo and annual run-rate live. Typical 50-engineer org lands around $3M/yr.",
+          },
+          {
+            id: "security",
+            keywords: [
+              "security",
+              "soc2",
+              "soc 2",
+              "iso",
+              "compliance",
+              "audit",
+              "ciso",
+              "infosec",
+              "data",
+              "does devin",
+              "source code leave",
+              "privacy",
+              "gdpr",
+              "hipaa",
+            ],
+            answer:
+              "Framing for the security conversation:\n1. Devin runs in an isolated sandbox VM per session — code is not retained for training.\n2. Enterprise deployments support private-VPC options and customer-managed keys.\n3. Access controls and audit trails map directly to SOC 2 / ISO expectations.\n\nIf they push deeper (CISO in the room), flag it and route to AE + solutions. Do not improvise numbers.",
+          },
+          {
+            id: "ideal-customer",
+            keywords: [
+              "icp",
+              "ideal customer",
+              "who buys",
+              "who is this for",
+              "target",
+              "best fit",
+              "fit",
+              "champion",
+              "buyer",
+            ],
+            answer:
+              "Best-fit buyer: head of platform / infra eng, VP Eng, or CTO at orgs with 100+ engineers carrying a visible migration, CVE, or test-coverage backlog. Tell-tale signals: Backstage, a paved-path team, a CISO mandate on dependency SLAs, or a \"we are modernising off mainframe/monolith\" story in their eng blog or LinkedIn posts.",
+          },
+          {
+            id: "champion-title",
+            keywords: [
+              "who do i call",
+              "who to call",
+              "which title",
+              "job title",
+              "champion",
+              "what role",
+              "who owns",
+              "buyer persona",
+              "personas",
+            ],
+            answer:
+              "Primary personas to prospect into:\n• VP Platform / VP Infra Eng — owns the migration + CVE backlog\n• Head of Developer Productivity / DevEx — measured on engineer throughput\n• CISO / Head of AppSec — feels the CVE SLA pain\n• CTO / VP Eng — if the org is <300 eng\n\nAvoid opening with \"engineering managers\" — they send it up, which adds weeks.",
+          },
+          {
+            id: "engineer-resistance",
+            keywords: [
+              "engineers resistant",
+              "engineers push back",
+              "engineers will hate",
+              "developer resistance",
+              "adoption",
+              "change management",
+              "replace engineers",
+              "job loss",
+            ],
+            answer:
+              "Lead with the real value: Devin does the work engineers hate — migrations, CVE triage, dependency bumps, test-coverage fills. It frees them to do the work they were hired for. Framing line: \"Your engineers are expensive because of their judgement, not their typing. Devin does the typing; your engineers stay in the review seat.\"",
+          },
+          {
+            id: "tried-ai-before",
+            keywords: [
+              "tried ai",
+              "tried copilot",
+              "didn't work",
+              "hallucinate",
+              "hallucination",
+              "ai tools failed",
+              "burned by",
+              "not impressed",
+              "ai fatigue",
+            ],
+            answer:
+              "Most AI coding tools they have tried are autocompletes — brittle, token-predictive, no execution. Devin is different because it runs the code, runs the tests, and iterates until green before it hands you a PR. Offer a POV: pick one real ticket from their backlog, let Devin close it end-to-end. That beats a demo.",
+          },
+          {
+            id: "no-budget",
+            keywords: [
+              "no budget",
+              "budget",
+              "cfo",
+              "finance",
+              "can't afford",
+              "too expensive",
+              "too costly",
+              "cost cutting",
+              "cuts",
+              "headcount freeze",
+            ],
+            answer:
+              "Reframe: Devin is budget-neutral or negative from month one at most eng orgs. Use the ROI Calculator live on the call — plug their team size, show the annual run-rate. Next line: \"This is not new spend; this is a reallocation of an existing maintenance-capacity cost onto a line item you can actually tie to ROI.\"",
+          },
+          {
+            id: "use-cases",
+            keywords: [
+              "use case",
+              "use cases",
+              "what can devin do",
+              "what does devin solve",
+              "tasks",
+              "types of work",
+              "examples",
+            ],
+            answer:
+              "Highest-signal use cases to lead with:\n1. Framework/version migrations (Java, Node, Python version bumps, React 17→19, etc.)\n2. CVE remediation across polyrepo estates\n3. Test-coverage uplift (60% → 90%)\n4. Flake/regression fix-up after incidents\n5. Internal platform refactors + Backstage plugin work\n\nAvoid leading with \"Devin can do anything\" — pick the one backlog that is closest to fire and lead with that.",
+          },
+          {
+            id: "how-to-deploy",
+            keywords: [
+              "deploy",
+              "install",
+              "setup",
+              "integration",
+              "integrate",
+              "github",
+              "gitlab",
+              "jira",
+              "linear",
+              "workflow",
+            ],
+            answer:
+              "Devin integrates via GitHub / GitLab (for source + PRs) and Slack / Jira / Linear (for task intake). Day-one setup for most orgs is a sandbox workspace on a single team's repos — no infrastructure change. Route detailed deployment questions to SE + AE; do not improvise.",
+          },
+          {
+            id: "discovery-questions",
+            keywords: [
+              "discovery",
+              "discovery question",
+              "discovery call",
+              "what should i ask",
+              "qualifying",
+              "qualification",
+              "questions to ask",
+            ],
+            answer:
+              "Top discovery questions to run in the first call:\n1. What percentage of your engineering capacity is spent on maintenance vs new product?\n2. How long is your typical version/framework migration taking today?\n3. How many open CVEs do you currently have over SLA?\n4. What is your test coverage target and where are you vs it?\n5. If you could hand 10 tickets a week to a teammate who never sleeps, what would they be?",
+          },
+          {
+            id: "opener",
+            keywords: [
+              "opener",
+              "opening line",
+              "cold email",
+              "cold outreach",
+              "first email",
+              "subject line",
+              "first message",
+              "outbound",
+            ],
+            answer:
+              "A high-hit pattern for cold outreach:\nSubject: \"[Prospect] × Devin — 10× faster migrations\"\n\nBody:\n\"Saw [specific signal — job post / eng blog / layoff news] at [Company]. At the scale you are running, pattern-based migration and CVE work eats the most senior capacity first.\n\nDevin is the autonomous teammate that closes that backlog with reviewable PRs — 10× faster on migrations, 20× faster on CVEs. Worth 15 minutes?\"\n\nOne signal, one claim, one ask.",
+          },
+          {
+            id: "demo",
+            keywords: [
+              "demo",
+              "pov",
+              "proof of value",
+              "poc",
+              "trial",
+              "test drive",
+              "see it",
+              "show me",
+            ],
+            answer:
+              "Always push for a Proof-of-Value over a scripted demo. Formula: \"Give me one real ticket from your backlog — a migration, a CVE, a coverage gap — and we will show you a merged PR on it within a week.\" PoVs convert 3-4× better than canned demos for Devin, because the whole value prop is finished work.",
+          },
+          {
+            id: "enterprise-deployment",
+            keywords: [
+              "enterprise",
+              "deployment options",
+              "vpc",
+              "self hosted",
+              "on prem",
+              "on-prem",
+              "private cloud",
+              "dedicated",
+              "regulated",
+              "regulator",
+            ],
+            answer:
+              "Enterprise deployments support private-VPC and customer-controlled environments. For regulated verticals (banking, insurance, healthcare), route any specific architecture questions to AE + SE on the same thread — do not promise what you do not know. BD talk-track: \"Yes, we support enterprise deployment; let me bring an SE on for the details.\"",
+          },
+          {
+            id: "pipeline-strategy",
+            keywords: [
+              "pipeline",
+              "outbound",
+              "cadence",
+              "sequence",
+              "how many touches",
+              "daily volume",
+              "what should i do today",
+              "day in the life",
+            ],
+            answer:
+              "A realistic SDR cadence for Devin:\n• 40–60 net-new accounts researched per week, focused on one vertical swim-lane at a time (e.g. streaming, then banking).\n• 6-touch sequence across email + LinkedIn + phone, one-signal-driven opener each.\n• Two \"power hours\" per day on the phone.\n• Weekly: review the Sector Terminal in this hub for fresh signals, pick 3 accounts to add to sequence.",
+          },
+          {
+            id: "signal",
+            keywords: [
+              "signal",
+              "trigger",
+              "buying signal",
+              "intent",
+              "when to reach out",
+              "timing",
+              "what makes an account hot",
+            ],
+            answer:
+              "High-intent signals for Devin:\n1. Public eng blog post about a migration, refactor, or platform overhaul\n2. Breach or CVE disclosure in the last 90 days\n3. Job posts for \"platform eng,\" \"DevEx,\" or \"developer productivity\" in volume\n4. Layoffs at an eng org that still has a public roadmap (capacity gap)\n5. New CTO or VP Platform in the last 6 months\n\nUse the Sector Terminal and Account Researcher in this hub to surface these.",
+          },
+          {
+            id: "battlecard-overall",
+            keywords: [
+              "why devin wins",
+              "differentiator",
+              "difference",
+              "moat",
+              "unique",
+              "only devin",
+              "devin vs",
+              "what makes devin different",
+            ],
+            answer:
+              "Three-point battlecard most SDRs miss:\n1. Autonomous execution — Devin plans, writes, runs, and iterates. Copilot/Cursor do not execute; they suggest.\n2. Priced as finished work — you get a bill per closed ticket's worth of value, not per seat.\n3. Benchmarks — 10× migrations, 20× CVE fixes, 60→90% test coverage. These are quantified; competitors sell productivity feelings.",
+          },
+          {
+            id: "onboarding",
+            keywords: [
+              "onboarding",
+              "first 30 days",
+              "ramp",
+              "start",
+              "first day",
+              "what to do first",
+              "learn devin",
+            ],
+            answer:
+              "SDR ramp plan that has worked:\nWeek 1: Run 10+ real Devin sessions yourself on your own repos. Internalise the \"finished work\" feel.\nWeek 2: Shadow 5 AE discovery calls, map buyer titles + objection language.\nWeek 3: Launch first outbound sequence to 50 accounts in one vertical.\nWeek 4: Book first qualified meeting. Review Sector Terminal daily for signal.",
+          },
+          {
+            id: "who-made-this",
+            keywords: [
+              "who built this",
+              "who made this",
+              "who is behind",
+              "company",
+              "cognition",
+              "founded",
+            ],
+            answer:
+              "Cognition AI built Devin. This hub was built by Idel using Devin — directed, reviewed, and shipped in a single afternoon. The meta-point: if you can get this much work out of Devin in prep for an interview, imagine what an eng org does with it in production.",
+          },
+        ];
+
+        const FALLBACK = {
+          answer:
+            "No direct hit for that — I stick to what I can back up on a call. Try one of the suggested prompts above, or reach for the objection handler / ROI calculator on this page. For anything security-spec, regulated-deployment, or pricing-specific, loop in AE + SE rather than improvise.",
+        };
+
+        const SUGGESTED = [
+          "How is Devin different from Copilot?",
+          "What is the pricing story?",
+          "Best discovery questions?",
+          "How do I handle 'we have no budget'?",
+          "Who is the ideal buyer?",
+          "What's a strong cold-email opener?",
+          "Which use cases should I lead with?",
+          "How do I run a POV?",
+        ];
+
+        // ===== Retrieval =====
+        function tokenise(s) {
+          return (s || "")
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/g, " ")
+            .split(/\s+/)
+            .filter((t) => t && t.length > 1);
+        }
+
+        function score(query, entry) {
+          const q = (query || "").toLowerCase();
+          const qTokens = tokenise(q);
+          let score = 0;
+          for (const kw of entry.keywords) {
+            const kwLower = kw.toLowerCase();
+            if (q.includes(kwLower)) {
+              score += Math.max(2, kwLower.split(/\s+/).length * 2);
+            } else {
+              const kwTokens = tokenise(kwLower);
+              for (const t of kwTokens) {
+                if (qTokens.includes(t)) score += 1;
+              }
+            }
+          }
+          return score;
+        }
+
+        function bestMatch(query) {
+          let best = null;
+          let bestScore = 0;
+          for (const entry of QA) {
+            const s = score(query, entry);
+            if (s > bestScore) {
+              bestScore = s;
+              best = entry;
+            }
+          }
+          if (bestScore < 2) return null;
+          return best;
+        }
+
+        // ===== Render =====
+        function escapeHtml(s) {
+          return String(s || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+        }
+
+        function addBubble(role, text) {
+          const el = document.createElement("div");
+          el.className = "ask-bubble " + role;
+          const label =
+            role === "user"
+              ? ""
+              : '<span class="label">Devin &middot; SDR playbook</span>';
+          el.innerHTML =
+            label +
+            escapeHtml(text).replace(/\n/g, "<br>");
+          msgs.appendChild(el);
+          msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function addTyping() {
+          const el = document.createElement("div");
+          el.className = "ask-bubble bot";
+          el.id = "askDevinTyping";
+          el.innerHTML =
+            '<span class="label">Devin &middot; SDR playbook</span><span class="animate-pulse">thinking&hellip;</span>';
+          msgs.appendChild(el);
+          msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function removeTyping() {
+          const el = $("askDevinTyping");
+          if (el) el.remove();
+        }
+
+        function handleQuery(q) {
+          if (!q || !q.trim()) return;
+          addBubble("user", q);
+          addTyping();
+          setTimeout(() => {
+            removeTyping();
+            const hit = bestMatch(q);
+            addBubble("bot", hit ? hit.answer : FALLBACK.answer);
+          }, 280 + Math.random() * 320);
+        }
+
+        function renderChips() {
+          chipsEl.innerHTML = SUGGESTED.map(
+            (s) =>
+              `<button type="button" class="ask-chip" data-q="${escapeHtml(
+                s
+              )}">${escapeHtml(s)}</button>`
+          ).join("");
+        }
+
+        // ===== Events =====
+        function openPanel() {
+          panel.classList.add("open");
+          launcher.style.display = "none";
+          setTimeout(() => input.focus(), 50);
+        }
+        function closePanel() {
+          panel.classList.remove("open");
+          launcher.style.display = "";
+        }
+        launcher.addEventListener("click", openPanel);
+        closeBtn.addEventListener("click", closePanel);
+        if (navLink) {
+          navLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            openPanel();
+          });
+        }
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && panel.classList.contains("open")) {
+            closePanel();
+          }
+        });
+
+        chipsEl.addEventListener("click", (e) => {
+          const btn = e.target.closest(".ask-chip");
+          if (!btn) return;
+          const q = btn.getAttribute("data-q");
+          input.value = "";
+          handleQuery(q);
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const q = input.value.trim();
+          if (!q) return;
+          input.value = "";
+          handleQuery(q);
+        });
+
+        // ===== Seed =====
+        renderChips();
+        addBubble(
+          "bot",
+          "I'm the in-hub SDR playbook. Ask me anything about Devin positioning, objections, discovery, pricing framing, or outbound plays. Use the chips below for quick hits."
+        );
       })();
     </script>
   </body>
