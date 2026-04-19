@@ -192,9 +192,9 @@
           </div>
           <nav class="hidden md:flex items-center gap-6 text-sm text-gray-400">
             <a href="#roi" class="hover:text-white transition">ROI</a>
-            <a href="#intelligence" data-intel-link="accounts" class="hover:text-white transition">Accounts</a>
             <a href="#intelligence" data-intel-link="terminal" class="hover:text-white transition">Terminal</a>
             <a href="#intelligence" data-intel-link="researcher" class="hover:text-white transition">Researcher</a>
+            <a href="#intelligence" data-intel-link="categories" class="hover:text-white transition">Categories</a>
             <a href="#objections" class="hover:text-white transition">Objections</a>
             <a href="#askdevin-open" id="askDevinNavLink" class="hover:text-white transition text-accent-400">Ask Devin</a>
           </nav>
@@ -212,7 +212,7 @@
             class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-accent-400 border border-accent-400/30 rounded-full px-3 py-1 mb-5"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-accent-400"></span>
-            Candidate Prep Artefact
+            SDR Intelligence Workbench
           </div>
           <h1
             class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.05]"
@@ -221,10 +221,10 @@
             <span class="shimmer">Intelligence Hub</span>
           </h1>
           <p class="mt-5 text-lg text-gray-300 leading-relaxed">
-            A live, interactive brief built for my Cognition SDR interview. Quantify
-            Devin's ROI, map the top entertainment &amp; finance accounts, win the
-            head-to-head against Copilot and Cursor, neutralise the five toughest
-            objections, and a 90-day plan for ramp, pipeline, and vertical strategy.
+            A live, interactive brief for the Cognition SDR desk. Quantify
+            Devin&rsquo;s ROI, run the sector terminal, research any account on
+            demand, and neutralise the five toughest objections &mdash; all in one
+            place.
           </p>
           <div class="mt-6 flex flex-wrap gap-2 text-xs">
             <span
@@ -451,8 +451,9 @@
             Account Intelligence
           </h2>
           <p class="text-gray-400 text-sm mt-2 max-w-2xl">
-            Top accounts, a live sector terminal, and a per-company deep-dive
-            &mdash; one workspace for everything I need on a call.
+            A live sector terminal, a per-company deep-dive, and my curated
+            account categories &mdash; one workspace for everything I need on
+            a call.
           </p>
         </div>
 
@@ -463,20 +464,12 @@
           role="tablist"
         >
           <button
-            data-intel-tab="accounts"
+            data-intel-tab="terminal"
             class="intel-tab px-4 py-2 text-sm rounded-lg border border-accent-500/40 bg-accent-500/10 text-white font-semibold"
             role="tab"
             aria-selected="true"
           >
-            <span class="text-accent-400 font-mono mr-2">01</span>Target Accounts
-          </button>
-          <button
-            data-intel-tab="terminal"
-            class="intel-tab px-4 py-2 text-sm rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-accent-400/40 transition"
-            role="tab"
-            aria-selected="false"
-          >
-            <span class="text-accent-400 font-mono mr-2">02</span>Sector Terminal
+            <span class="text-accent-400 font-mono mr-2">01</span>Sector Terminal
           </button>
           <button
             data-intel-tab="researcher"
@@ -484,40 +477,73 @@
             role="tab"
             aria-selected="false"
           >
-            <span class="text-accent-400 font-mono mr-2">03</span>Account Researcher
+            <span class="text-accent-400 font-mono mr-2">02</span>Account Researcher
+          </button>
+          <button
+            data-intel-tab="categories"
+            class="intel-tab px-4 py-2 text-sm rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-accent-400/40 transition"
+            role="tab"
+            aria-selected="false"
+          >
+            <span class="text-accent-400 font-mono mr-2">03</span>My Categories
           </button>
         </div>
 
-        <!-- Panel: Target Accounts -->
-        <div data-intel-panel="accounts">
+        <!-- Panel: My Categories -->
+        <div data-intel-panel="categories" hidden>
           <p class="text-gray-400 text-sm mb-4 max-w-2xl">
-            Top 10 entertainment, media &amp; financial services accounts &mdash;
-            each with a concrete pain point, Devin use case, and an opener I can
-            send in the next sequence.
+            My curated account lists, grouped by category. Each row has a
+            concrete pain point, Devin use case, a cold-open line, and the best
+            decision maker to reach on LinkedIn.
           </p>
-        <div class="card overflow-hidden">
-          <div class="overflow-x-auto scroll-fade">
-            <table class="w-full text-sm text-left">
-              <thead
-                class="text-[11px] uppercase tracking-wider text-gray-400 bg-white/5"
-              >
-                <tr>
-                  <th class="px-5 py-3 font-semibold">Company</th>
-                  <th class="px-5 py-3 font-semibold">Eng. Team</th>
-                  <th class="px-5 py-3 font-semibold">Primary Pain Point</th>
-                  <th class="px-5 py-3 font-semibold">Devin Use Case</th>
-                  <th class="px-5 py-3 font-semibold">Opening Line</th>
-                </tr>
-              </thead>
-              <tbody id="accountsBody" class="divide-y divide-white/5"></tbody>
-            </table>
+
+          <!-- Category chip bar -->
+          <div class="flex flex-wrap items-center gap-2 mb-5">
+            <button
+              data-category-chip="entertainment"
+              class="category-chip px-3 py-1.5 text-xs rounded-full border border-accent-500/50 bg-accent-500/15 text-white font-semibold"
+              aria-selected="true"
+            >
+              Entertainment &amp; Finance
+              <span class="ml-1.5 text-[10px] font-mono text-accent-300">10</span>
+            </button>
+            <button
+              type="button"
+              id="addCategoryBtn"
+              class="px-3 py-1.5 text-xs rounded-full border border-dashed border-white/15 text-gray-400 hover:text-white hover:border-accent-400/40 transition"
+              title="Demo &mdash; category builder coming soon"
+            >
+              + Add category
+            </button>
+            <span class="ml-auto text-[11px] font-mono text-gray-500">
+              10 accounts &middot; last edited by Idel
+            </span>
+          </div>
+
+          <div class="card overflow-hidden">
+            <div class="overflow-x-auto scroll-fade">
+              <table class="w-full text-sm text-left">
+                <thead
+                  class="text-[11px] uppercase tracking-wider text-gray-400 bg-white/5"
+                >
+                  <tr>
+                    <th class="px-5 py-3 font-semibold">Company</th>
+                    <th class="px-5 py-3 font-semibold">Eng. Team</th>
+                    <th class="px-5 py-3 font-semibold">Primary Pain Point</th>
+                    <th class="px-5 py-3 font-semibold">Devin Use Case</th>
+                    <th class="px-5 py-3 font-semibold">Opening Line</th>
+                    <th class="px-5 py-3 font-semibold">Best Person to Reach</th>
+                  </tr>
+                </thead>
+                <tbody id="accountsBody" class="divide-y divide-white/5"></tbody>
+              </table>
+            </div>
           </div>
         </div>
-        </div>
-        <!-- /Panel: Target Accounts -->
+        <!-- /Panel: My Categories -->
 
         <!-- Panel: Sector Terminal -->
-        <div data-intel-panel="terminal" hidden>
+        <div data-intel-panel="terminal">
           <p class="text-gray-400 text-sm mb-4 max-w-2xl">
             A BD-desk view of entertainment &amp; media engineering &mdash;
             engineering news pulled live from Hacker News, and open
@@ -756,7 +782,7 @@
       <footer
         class="border-t border-white/5 py-6 text-center text-xs text-gray-500"
       >
-        Built by Idel with Devin &middot; Cognition SDR interview prep &middot;
+        Built by Idel with Devin &middot; Cognition SDR workbench &middot;
         <span id="year"></span>
       </footer>
     </div>
@@ -773,6 +799,11 @@
             "Autonomous migration of internal services + CVE remediation across 1,000s of repos.",
           open:
             "Saw Netflix&rsquo;s tech blog on paved paths &mdash; how much engineer time still goes to keeping that paved path patched vs shipping new streaming features?",
+          contact: {
+            name: "Elizabeth Stone",
+            title: "Chief Product &amp; Technology Officer",
+            linkedin: "https://www.linkedin.com/in/elizabeth-stone-608a754",
+          },
         },
         {
           name: "Warner Bros Discovery",
@@ -783,6 +814,11 @@
             "Devin as a consolidation engineer: migrating duplicated services and lifting test coverage to 90%+.",
           open:
             "After the Max relaunch, which part of the consolidated stack is costing the most engineering time to maintain rather than extend?",
+          contact: {
+            name: "Avi Saxena",
+            title: "CTO, Warner Bros. Discovery",
+            linkedin: "https://www.linkedin.com/in/saxena",
+          },
         },
         {
           name: "Spotify",
@@ -793,6 +829,12 @@
             "Offload framework upgrades and Backstage plugin work to Devin so platform engineers focus on new capabilities.",
           open:
             "Love Spotify&rsquo;s Backstage &mdash; if your platform team could reclaim the hours they spend on upgrades, what would they build instead?",
+          contact: {
+            name: "Gustav Söderström",
+            title: "Co-CEO (former Chief Product &amp; Tech Officer)",
+            linkedin:
+              "https://www.linkedin.com/search/results/people/?keywords=Gustav%20S%C3%B6derstr%C3%B6m%20Spotify",
+          },
         },
         {
           name: "Disney",
@@ -803,6 +845,11 @@
             "20&times; faster security fixes across the streaming + studio portfolio.",
           open:
             "With the ESPN direct-to-consumer launch, how is the team balancing new surface area against the CVE queue on the existing streaming stack?",
+          contact: {
+            name: "Adam Smith",
+            title: "Chief Product &amp; Tech Officer, Disney Entertainment &amp; ESPN",
+            linkedin: "https://www.linkedin.com/in/adam-smith-01158",
+          },
         },
         {
           name: "Paramount+",
@@ -813,6 +860,11 @@
             "Autonomous migration of legacy backends; measurable eng hours returned to the streaming roadmap.",
           open:
             "As Paramount+ pushes toward profitability, where do you still have engineers tied up in legacy systems instead of streaming?",
+          contact: {
+            name: "Phil Wiser",
+            title: "EVP &amp; CTO, Paramount",
+            linkedin: "https://www.linkedin.com/in/phil-wiser-b8533",
+          },
         },
         {
           name: "DAZN",
@@ -823,6 +875,11 @@
             "Devin runs maintenance + test coverage so live ops teams focus on reliability during marquee events.",
           open:
             "With the new global rights deals, how much of your engineering bandwidth is absorbed by keeping the live pipeline patched vs expanding it?",
+          contact: {
+            name: "Sandeep Tiku",
+            title: "CTO, DAZN Group",
+            linkedin: "https://uk.linkedin.com/in/sandeep-tiku",
+          },
         },
         {
           name: "Peacock / NBCUniversal",
@@ -833,6 +890,11 @@
             "Devin as the modernisation team you don&rsquo;t have to hire.",
           open:
             "Curious &mdash; across Peacock, Sky, and the broadcast stack, which estate is most often deprioritised for modernisation?",
+          contact: {
+            name: "Patrick Miceli",
+            title: "CTO, Direct-to-Consumer &amp; Global Streaming, NBCUniversal",
+            linkedin: "https://fr.linkedin.com/in/pmiceli",
+          },
         },
         {
           name: "Barclays",
@@ -843,6 +905,11 @@
             "Devin for regulated migrations &amp; security remediation with full audit trail.",
           open:
             "On the mainframe modernisation programme &mdash; how much of the slow-down today is capacity vs risk appetite?",
+          contact: {
+            name: "Craig Bright",
+            title: "Group CIO, Barclays",
+            linkedin: "https://uk.linkedin.com/in/craig-bright-7981154",
+          },
         },
         {
           name: "Goldman Sachs",
@@ -853,6 +920,11 @@
             "Autonomous internal-framework migrations, freeing senior engineers for quant &amp; trading initiatives.",
           open:
             "If Marquee and the trading platforms could upgrade frameworks without pulling senior engineers, what would that unlock in the next quarter?",
+          contact: {
+            name: "Marco Argenti",
+            title: "CIO, Goldman Sachs",
+            linkedin: "https://www.linkedin.com/in/marcoargenti",
+          },
         },
         {
           name: "Lloyds Banking Group",
@@ -863,6 +935,12 @@
             "Devin as force-multiplier on legacy-to-cloud migration &amp; security remediation inside the digital transformation programme.",
           open:
             "With the 2025 strategic review, where is Lloyds most capacity-constrained between legacy migration and new digital build?",
+          contact: {
+            name: "Ron van Kemenade",
+            title: "CTO, Lloyds Banking Group",
+            linkedin:
+              "https://www.linkedin.com/search/results/people/?keywords=Ron%20van%20Kemenade%20Lloyds",
+          },
         },
       ];
 
@@ -893,16 +971,27 @@
       (function renderAccounts() {
         const body = document.getElementById("accountsBody");
         body.innerHTML = accounts
-          .map(
-            (a) => `
+          .map((a) => {
+            const c = a.contact || null;
+            const contactCell = c
+              ? `<a href="${c.linkedin}" target="_blank" rel="noopener noreferrer" class="group inline-flex flex-col gap-0.5 hover:text-white transition">
+                   <span class="text-white font-semibold group-hover:text-accent-300 inline-flex items-center gap-1.5">
+                     ${c.name}
+                     <svg class="w-3.5 h-3.5 text-accent-400 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM8 19H5V8h3v11zM6.5 6.7c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM20 19h-3v-5.6c0-1.3-.5-2.1-1.6-2.1-.9 0-1.4.6-1.6 1.1-.1.2-.1.5-.1.7V19h-3V8h3v1.3c.4-.6 1.1-1.5 2.7-1.5 2 0 3.6 1.3 3.6 4.2V19z"/></svg>
+                   </span>
+                   <span class="text-[11px] text-gray-400 leading-snug">${c.title}</span>
+                 </a>`
+              : `<span class="text-gray-500 text-xs">&mdash;</span>`;
+            return `
             <tr class="table-row-hover align-top">
               <td class="px-5 py-4 font-semibold text-white whitespace-nowrap">${a.name}</td>
               <td class="px-5 py-4 text-gray-300 font-mono text-xs">${a.size}</td>
               <td class="px-5 py-4 text-gray-300 max-w-xs">${a.pain}</td>
               <td class="px-5 py-4 text-gray-300 max-w-xs">${a.use}</td>
               <td class="px-5 py-4 text-gray-200 italic max-w-sm">&ldquo;${a.open}&rdquo;</td>
-            </tr>`
-          )
+              <td class="px-5 py-4 max-w-[220px]">${contactCell}</td>
+            </tr>`;
+          })
           .join("");
       })();
 
@@ -3092,7 +3181,7 @@
               "founded",
             ],
             answer:
-              "Cognition AI built Devin. This hub was built by Idel using Devin — directed, reviewed, and shipped in a single afternoon. The meta-point: if you can get this much work out of Devin in prep for an interview, imagine what an eng org does with it in production.",
+              "Cognition AI built Devin. This hub was built by Idel using Devin — directed, reviewed, and shipped in a single afternoon. The meta-point: if one person and Devin can ship a full live intelligence workspace in an afternoon, imagine what a full eng org does with it in production.",
           },
         ];
 
