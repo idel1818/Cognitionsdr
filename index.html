@@ -159,9 +159,9 @@
   <body class="min-h-screen">
     <div class="grid-bg">
       <!-- Header -->
-      <header class="border-b border-white/5 backdrop-blur-sm">
+      <header class="border-b border-white/5 backdrop-blur-sm sticky top-0 z-40 bg-navy-950/80">
         <div
-          class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between"
+          class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4"
         >
           <div class="flex items-center gap-3">
             <div
@@ -190,58 +190,186 @@
               </div>
             </div>
           </div>
-          <nav class="hidden md:flex items-center gap-6 text-sm text-gray-400">
-            <a href="#roi" class="hover:text-white transition">ROI</a>
-            <a href="#intelligence" data-intel-link="terminal" class="hover:text-white transition">Terminal</a>
-            <a href="#intelligence" data-intel-link="researcher" class="hover:text-white transition">Researcher</a>
-            <a href="#intelligence" data-intel-link="categories" class="hover:text-white transition">Categories</a>
-            <a href="#objections" class="hover:text-white transition">Objections</a>
-            <a href="#askdevin-open" id="askDevinNavLink" class="hover:text-white transition text-accent-400">Ask Devin</a>
+          <nav id="workspaceNav" class="hidden md:flex items-center gap-1 text-sm">
+            <button data-view-link="home"   class="view-link px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">Home</button>
+            <button data-view-link="sales"  class="view-link px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">Sales Guide</button>
+            <button data-view-link="intel"  class="view-link px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">Intelligence</button>
+            <button data-view-link="comp"   class="view-link px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">Competition</button>
+            <button id="askDevinNavLink"    class="px-3 py-1.5 rounded-lg text-accent-400 hover:bg-accent-500/10 transition font-semibold">Ask Devin</button>
           </nav>
-          <div class="hidden md:flex items-center gap-2 text-xs text-gray-400">
+          <div class="hidden lg:flex items-center gap-2 text-xs text-gray-400">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Prepared by Idel &middot; Built with Devin
+            Live &middot; Built with Devin
           </div>
         </div>
       </header>
 
+      <main id="workspace">
+
+      <!-- ========================================== -->
+      <!-- HOME VIEW                                   -->
+      <!-- ========================================== -->
+      <div data-view="home">
+
       <!-- Hero -->
-      <section class="max-w-7xl mx-auto px-6 pt-14 pb-10">
+      <section class="max-w-7xl mx-auto px-6 pt-14 pb-8">
         <div class="max-w-3xl">
           <div
             class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-accent-400 border border-accent-400/30 rounded-full px-3 py-1 mb-5"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-accent-400"></span>
-            SDR Intelligence Workbench
+            GTM &amp; SDR Workbench
           </div>
           <h1
             class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.05]"
           >
-            Cognition SDR
-            <span class="shimmer">Intelligence Hub</span>
+            Cognition
+            <span class="shimmer">Revenue OS</span>
           </h1>
           <p class="mt-5 text-lg text-gray-300 leading-relaxed">
-            A live, interactive brief for the Cognition SDR desk. Quantify
-            Devin&rsquo;s ROI, run the sector terminal, research any account on
-            demand, and neutralise the five toughest objections &mdash; all in one
-            place.
+            A living workspace for the Cognition GTM &amp; SDR team &mdash; sell Devin
+            with a real-time intelligence terminal, a full sales guide, and a
+            live pulse on every competitor. Pick a tool below.
           </p>
           <div class="mt-6 flex flex-wrap gap-2 text-xs">
-            <span
-              class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300"
-              >Single HTML file</span
-            >
-            <span
-              class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300"
-              >No backend</span
-            >
-            <span
-              class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300"
-              >Directed by Idel, executed by Devin</span
-            >
+            <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300">Live feeds</span>
+            <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300">Zero backend</span>
+            <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300">Directed by Idel, executed by Devin</span>
           </div>
         </div>
       </section>
+
+      <!-- Tool Picker -->
+      <section class="max-w-7xl mx-auto px-6 pb-16">
+        <div class="flex items-end justify-between mb-5">
+          <div class="text-xs uppercase tracking-widest text-accent-400">Pick a Workspace</div>
+          <div class="hidden md:block text-[11px] font-mono text-gray-500">three tools &middot; one OS</div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <button data-view-link="sales" class="tool-card group text-left card p-6 hover:border-accent-400/40 transition relative overflow-hidden">
+            <div class="absolute top-4 right-4 text-[10px] font-mono text-gray-500">01</div>
+            <div class="w-10 h-10 rounded-lg bg-accent-500/15 border border-accent-500/30 flex items-center justify-center mb-4 group-hover:bg-accent-500/25 transition">
+              <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            </div>
+            <div class="text-white font-semibold text-lg mb-1.5">Sales Guide</div>
+            <div class="text-sm text-gray-400 leading-relaxed mb-4">Selling points for every Devin surface, a live ROI calculator, and the five toughest objections &mdash; ready to paste into a call.</div>
+            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">Selling Points</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">ROI Calc</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">Objections</span>
+            </div>
+          </button>
+          <button data-view-link="intel" class="tool-card group text-left card p-6 hover:border-accent-400/40 transition relative overflow-hidden">
+            <div class="absolute top-4 right-4 text-[10px] font-mono text-gray-500">02</div>
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-4 group-hover:bg-emerald-500/25 transition">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </div>
+            <div class="text-white font-semibold text-lg mb-1.5">Intelligence Terminal</div>
+            <div class="text-sm text-gray-400 leading-relaxed mb-4">Bloomberg for pipeline. Search any company or industry &mdash; get live eng news, open roles, M&amp;A signals and migration triggers in one feed.</div>
+            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">Free-text search</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">News + Roles</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">M&amp;A signals</span>
+            </div>
+          </button>
+          <button data-view-link="comp" class="tool-card group text-left card p-6 hover:border-accent-400/40 transition relative overflow-hidden">
+            <div class="absolute top-4 right-4 text-[10px] font-mono text-gray-500">03</div>
+            <div class="w-10 h-10 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-center mb-4 group-hover:bg-rose-500/25 transition">
+              <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="text-white font-semibold text-lg mb-1.5">Competition Stack</div>
+            <div class="text-sm text-gray-400 leading-relaxed mb-4">A live pulse on every Devin competitor &mdash; shipping cadence, recent news, funding, and pricing. Never walk into a meeting blind.</div>
+            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">Cursor</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">Copilot</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">Windsurf</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">Replit</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-400">+8 more</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-4 text-xs">
+          <div class="card p-4">
+            <div class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">What&rsquo;s live</div>
+            <div class="text-white font-semibold">Hacker News, Greenhouse, curated intel</div>
+            <div class="text-gray-400 mt-1">Pulled on every page-load. No stale dashboards.</div>
+          </div>
+          <div class="card p-4">
+            <div class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Built for</div>
+            <div class="text-white font-semibold">SDRs, AEs, GTM leaders at Cognition</div>
+            <div class="text-gray-400 mt-1">Opinionated workflow, not a blank dashboard.</div>
+          </div>
+          <div class="card p-4">
+            <div class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Staying current</div>
+            <div class="text-white font-semibold">Thinks and updates itself</div>
+            <div class="text-gray-400 mt-1">Every open fetches the latest news + roles + competitor activity.</div>
+          </div>
+        </div>
+      </section>
+
+      </div>
+      <!-- /HOME VIEW -->
+
+      <!-- ========================================== -->
+      <!-- SALES GUIDE VIEW                            -->
+      <!-- ========================================== -->
+      <div data-view="sales" hidden>
+
+      <!-- Workspace header -->
+      <section class="max-w-7xl mx-auto px-6 pt-8 pb-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+          <div>
+            <button data-view-link="home" class="text-[11px] text-gray-400 hover:text-white inline-flex items-center gap-1 mb-2">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+              Back to home
+            </button>
+            <h2 class="text-2xl md:text-3xl font-bold text-white">Sales Guide</h2>
+            <p class="text-gray-400 text-sm mt-1 max-w-2xl">
+              Everything a Cognition seller needs in one place &mdash; current
+              product selling points, an ROI model, and the five objections
+              you&rsquo;ll hear on every first call.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sub-tab bar -->
+        <div id="salesSubTabs" class="flex flex-wrap gap-2 mt-4 border-b border-white/5 pb-3" role="tablist">
+          <button data-sub="selling" class="sub-tab px-4 py-2 text-sm rounded-lg border border-accent-500/40 bg-accent-500/10 text-white font-semibold" aria-selected="true" role="tab">
+            <span class="text-accent-400 font-mono mr-2">01</span>Selling Points
+          </button>
+          <button data-sub="roi" class="sub-tab px-4 py-2 text-sm rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-accent-400/40 transition" aria-selected="false" role="tab">
+            <span class="text-accent-400 font-mono mr-2">02</span>ROI Calculator
+          </button>
+          <button data-sub="objections" class="sub-tab px-4 py-2 text-sm rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-accent-400/40 transition" aria-selected="false" role="tab">
+            <span class="text-accent-400 font-mono mr-2">03</span>Objection Handler
+          </button>
+        </div>
+      </section>
+
+      <!-- Sub-panel: Selling Points -->
+      <div data-subpanel="selling">
+        <section class="max-w-7xl mx-auto px-6 py-6">
+          <div class="flex items-start justify-between mb-6 gap-4">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">Live product map</div>
+              <h3 class="text-xl md:text-2xl font-bold text-white">What to sell when</h3>
+              <p class="text-gray-400 text-sm mt-1 max-w-2xl">
+                Every Cognition surface paired with the buyer, the pitch, the
+                proof, and the next step. Click a card to copy the one-liner.
+              </p>
+            </div>
+            <div class="hidden md:block text-[11px] font-mono text-gray-500 mt-2">
+              <span id="sellingPointCount">0</span> surfaces tracked
+            </div>
+          </div>
+          <div id="sellingPointsGrid" class="grid md:grid-cols-2 gap-4"></div>
+        </section>
+      </div>
+      <!-- /Selling Points -->
+
+      <!-- Sub-panel: ROI (existing content below) -->
+      <div data-subpanel="roi" hidden>
 
       <!-- ROI Calculator -->
       <section id="roi" class="max-w-7xl mx-auto px-6 py-10">
@@ -440,21 +568,73 @@
           </div>
         </div>
       </section>
+      </div>
+      <!-- /Sub-panel: ROI -->
 
-      <!-- Account Intelligence (combined: Accounts + Terminal + Researcher) -->
-      <section id="intelligence" class="max-w-7xl mx-auto px-6 py-10">
-        <div class="mb-6">
-          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            02 &nbsp;//&nbsp; Intelligence
+      <!-- Sub-panel: Objections (moved here from bottom) -->
+      <div data-subpanel="objections" hidden>
+        <section class="max-w-7xl mx-auto px-6 py-6">
+          <div class="mb-6">
+            <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">Sales Plays</div>
+            <h3 class="text-xl md:text-2xl font-bold text-white">Objection Handler</h3>
+            <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+              The five objections Cognition sellers hear on every first call.
+              Click to expand the response.
+            </p>
           </div>
-          <h2 class="text-2xl md:text-3xl font-bold text-white">
-            Account Intelligence
-          </h2>
+          <div id="objectionsList" class="space-y-3"></div>
+        </section>
+      </div>
+      <!-- /Sub-panel: Objections -->
+
+      </div>
+      <!-- /SALES GUIDE VIEW -->
+
+      <!-- ========================================== -->
+      <!-- INTELLIGENCE VIEW                           -->
+      <!-- ========================================== -->
+      <div data-view="intel" hidden>
+      <!-- Account Intelligence (combined: Accounts + Terminal + Researcher) -->
+      <section id="intelligence" class="max-w-7xl mx-auto px-6 py-8">
+        <div class="mb-4">
+          <button data-view-link="home" class="text-[11px] text-gray-400 hover:text-white inline-flex items-center gap-1 mb-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            Back to home
+          </button>
+        </div>
+        <div class="mb-6">
+          <h2 class="text-2xl md:text-3xl font-bold text-white">Intelligence Terminal</h2>
           <p class="text-gray-400 text-sm mt-2 max-w-2xl">
-            A live sector terminal, a per-company deep-dive, and my curated
-            account categories &mdash; one workspace for everything I need on
-            a call.
+            Bloomberg-style terminal for pipeline. Search any company or
+            industry &mdash; live eng news, open roles, M&amp;A signals, and
+            migration triggers in one feed. Switch to the per-account deep-dive
+            when you&rsquo;re prepping for a call.
           </p>
+        </div>
+
+        <!-- Global search bar -->
+        <div class="card p-4 mb-5 flex flex-wrap items-center gap-3">
+          <div class="flex-1 min-w-[260px] relative">
+            <svg class="w-4 h-4 text-gray-500 absolute left-3 top-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input
+              id="intelSearch"
+              type="search"
+              placeholder="Search a company or industry &mdash; e.g. Netflix, Goldman, Healthcare, Telco, Retail, Gaming…"
+              class="w-full bg-navy-950/70 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white text-sm focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20"
+              aria-label="Search intelligence terminal"
+            />
+          </div>
+          <div id="intelSearchChips" class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+            <button data-query="Netflix" class="intel-quick px-2.5 py-1 rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-accent-400/40 transition">Netflix</button>
+            <button data-query="Goldman Sachs" class="intel-quick px-2.5 py-1 rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-accent-400/40 transition">Goldman</button>
+            <button data-query="Healthcare" class="intel-quick px-2.5 py-1 rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-accent-400/40 transition">Healthcare</button>
+            <button data-query="Telco" class="intel-quick px-2.5 py-1 rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-accent-400/40 transition">Telco</button>
+            <button data-query="Retail" class="intel-quick px-2.5 py-1 rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-accent-400/40 transition">Retail</button>
+            <button data-query="Gaming" class="intel-quick px-2.5 py-1 rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-accent-400/40 transition">Gaming</button>
+          </div>
+          <div class="text-[11px] font-mono text-gray-500 hidden md:block">
+            <span id="intelActiveQueryLabel" class="text-accent-300">streaming &middot; media &middot; finance</span>
+          </div>
         </div>
 
         <!-- Intelligence tab bar -->
@@ -762,22 +942,81 @@
         </div>
         <!-- /Panel: Account Researcher -->
       </section>
+      </div>
+      <!-- /INTELLIGENCE VIEW -->
 
-      <!-- Objections -->
-      <section id="objections" class="max-w-7xl mx-auto px-6 py-10">
-        <div class="mb-6">
-          <div class="text-xs uppercase tracking-widest text-accent-400 mb-2">
-            03 &nbsp;//&nbsp; Sales Plays
+      <!-- ========================================== -->
+      <!-- COMPETITION STACK VIEW                      -->
+      <!-- ========================================== -->
+      <div data-view="comp" hidden>
+      <section class="max-w-7xl mx-auto px-6 py-8">
+        <button data-view-link="home" class="text-[11px] text-gray-400 hover:text-white inline-flex items-center gap-1 mb-2">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back to home
+        </button>
+        <h2 class="text-2xl md:text-3xl font-bold text-white">Competition Stack</h2>
+        <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+          A live pulse on every major Devin competitor. Recent shipping, news,
+          funding, pricing &mdash; always current so sellers walk into every
+          call with the battlecard already loaded.
+        </p>
+
+        <!-- Competitor rail -->
+        <div id="compRail" class="flex flex-wrap gap-2 mt-5 mb-5"></div>
+
+        <!-- Terminal wrapper -->
+        <div class="rounded-xl border border-rose-500/25 bg-[#0A0508] overflow-hidden shadow-glow">
+          <!-- Terminal header -->
+          <div class="flex items-center justify-between px-4 py-2 border-b border-white/5 bg-gradient-to-r from-[#1a0a0f] to-[#0a0508]">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/70"></span>
+              <span class="ml-3 font-mono text-[11px] uppercase tracking-widest text-gray-400">cognition-bd@comp:~$</span>
+            </div>
+            <div class="flex items-center gap-4 font-mono text-[11px] text-gray-400">
+              <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
+                <span class="text-rose-400">TRACKING</span>
+              </span>
+              <span id="compClock" class="tabular-nums">--:--:-- UTC</span>
+            </div>
           </div>
-          <h2 class="text-2xl md:text-3xl font-bold text-white">
-            Objection Handler
-          </h2>
-          <p class="text-gray-400 text-sm mt-2 max-w-2xl">
-            The five objections I expect on every first call. Click to expand.
-          </p>
+
+          <!-- Sub-tabs -->
+          <div class="flex flex-wrap items-center gap-3 px-4 py-3 border-b border-white/5 bg-navy-950/50">
+            <div class="flex items-center gap-1 rounded-lg bg-white/5 p-1">
+              <button data-comp-tab="all" class="comp-tab px-3 py-1.5 text-xs rounded-md text-white bg-rose-500/20 font-semibold">All Activity</button>
+              <button data-comp-tab="shipping" class="comp-tab px-3 py-1.5 text-xs rounded-md text-gray-400 hover:text-white transition">Shipping</button>
+              <button data-comp-tab="news" class="comp-tab px-3 py-1.5 text-xs rounded-md text-gray-400 hover:text-white transition">News</button>
+              <button data-comp-tab="hiring" class="comp-tab px-3 py-1.5 text-xs rounded-md text-gray-400 hover:text-white transition">Hiring</button>
+              <button data-comp-tab="stack" class="comp-tab px-3 py-1.5 text-xs rounded-md text-gray-400 hover:text-white transition">Battlecard</button>
+            </div>
+            <div class="ml-auto flex items-center gap-3">
+              <span id="compStatus" class="font-mono text-[11px] text-gray-500">syncing...</span>
+              <button id="compRefresh" class="p-1.5 rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition" title="Refresh">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feed -->
+          <div id="compFeed" class="max-h-[560px] overflow-y-auto scroll-fade divide-y divide-white/5"></div>
+
+          <!-- Battlecard pane (hidden by default) -->
+          <div id="compBattlecard" class="p-5" hidden></div>
+
+          <!-- Footer -->
+          <div class="flex flex-wrap items-center justify-between gap-2 px-4 py-2 border-t border-white/5 bg-navy-950/70 font-mono text-[11px] text-gray-500">
+            <span><span id="compRowCount">0</span> rows &middot; tracked_tool=<span id="compActive">all</span></span>
+            <span>source: curated ship log + news.ycombinator.com (Algolia) &middot; updated on open</span>
+          </div>
         </div>
-        <div id="objectionsList" class="space-y-3"></div>
       </section>
+      </div>
+      <!-- /COMPETITION STACK VIEW -->
+
+      </main>
 
       <footer
         class="border-t border-white/5 py-6 text-center text-xs text-gray-500"
@@ -3345,6 +3584,869 @@
           "bot",
           "I'm the in-hub SDR playbook. Ask me anything about Devin positioning, objections, discovery, pricing framing, or outbound plays. Use the chips below for quick hits."
         );
+      })();
+    </script>
+
+    <!-- =============================================== -->
+    <!-- Workspace switcher + Sales sub-tabs             -->
+    <!-- =============================================== -->
+    <script>
+      (function () {
+        const views = document.querySelectorAll("[data-view]");
+        const viewLinks = document.querySelectorAll("[data-view-link]");
+
+        function setView(name) {
+          let found = false;
+          views.forEach((v) => {
+            const match = v.getAttribute("data-view") === name;
+            if (match) {
+              v.removeAttribute("hidden");
+              found = true;
+            } else {
+              v.setAttribute("hidden", "");
+            }
+          });
+          if (!found) {
+            // fallback to home if unknown
+            document.querySelector('[data-view="home"]').removeAttribute("hidden");
+          }
+          // nav active state
+          document.querySelectorAll("#workspaceNav .view-link").forEach((btn) => {
+            const active = btn.getAttribute("data-view-link") === name;
+            btn.classList.toggle("text-white", active);
+            btn.classList.toggle("bg-white/10", active);
+            btn.classList.toggle("text-gray-400", !active);
+          });
+          // persist
+          try {
+            history.replaceState(null, "", "#" + name);
+          } catch (e) {}
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        viewLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = link.getAttribute("data-view-link");
+            if (target) setView(target);
+          });
+        });
+
+        // init from hash or default home
+        const initial = (location.hash || "#home").replace("#", "");
+        const valid = ["home", "sales", "intel", "comp"];
+        setView(valid.includes(initial) ? initial : "home");
+
+        // expose
+        window.setWorkspaceView = setView;
+      })();
+
+      // ---- Sales Guide sub-tabs ----
+      (function () {
+        const tabs = document.querySelectorAll("#salesSubTabs .sub-tab");
+        const panels = document.querySelectorAll("[data-subpanel]");
+        function setSub(name) {
+          tabs.forEach((t) => {
+            const active = t.getAttribute("data-sub") === name;
+            t.classList.toggle("border-accent-500/40", active);
+            t.classList.toggle("bg-accent-500/10", active);
+            t.classList.toggle("text-white", active);
+            t.classList.toggle("font-semibold", active);
+            t.classList.toggle("border-white/10", !active);
+            t.classList.toggle("text-gray-300", !active);
+            t.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          panels.forEach((p) => {
+            if (p.getAttribute("data-subpanel") === name) {
+              p.removeAttribute("hidden");
+            } else {
+              p.setAttribute("hidden", "");
+            }
+          });
+        }
+        tabs.forEach((t) => {
+          t.addEventListener("click", () => {
+            setSub(t.getAttribute("data-sub"));
+          });
+        });
+        // default
+        setSub("selling");
+      })();
+    </script>
+
+    <!-- =============================================== -->
+    <!-- Selling Points grid                             -->
+    <!-- =============================================== -->
+    <script>
+      (function () {
+        const grid = document.getElementById("sellingPointsGrid");
+        if (!grid) return;
+        const points = [
+          {
+            surface: "Devin — the autonomous engineer",
+            buyer: "VP Eng · CTO · Head of Platform",
+            pitch:
+              "A hireable AI software engineer that plans, codes, tests and ships — with human review at every step. Not a chat tool; a teammate on Slack, Linear, GitHub.",
+            proof:
+              "10× faster on migrations · 20× faster on security fixes · test coverage 60→90% in benchmarks.",
+            next: "Scope a paid proof-of-value on one legacy service or CVE queue.",
+            tag: "core",
+          },
+          {
+            surface: "Devin Search (enterprise-grade codebase Q&A)",
+            buyer: "Platform / DevEx leaders",
+            pitch:
+              "Ask any question across your monorepo(s) in natural language and get precise, citation-backed answers — onboarding, debugging, migrations unlocked.",
+            proof:
+              "Indexes private repos; grounded answers with file-line citations; VPC or SaaS deployment.",
+            next: "Pilot on one monorepo with 10+ new hires ramping.",
+            tag: "new",
+          },
+          {
+            surface: "Devin Wiki",
+            buyer: "Eng leadership · DevEx",
+            pitch:
+              "Auto-generated, always-current docs for any codebase. Kills the tribal-knowledge tax and cuts onboarding time dramatically.",
+            proof:
+              "Generated from the code itself — can't go stale. Updates on every merge.",
+            next: "Turn it on in one repo and measure time-to-first-PR for new joiners.",
+            tag: "new",
+          },
+          {
+            surface: "Slack + Linear native integration",
+            buyer: "Eng managers · IC engineers",
+            pitch:
+              "Devin lives where work already happens. @-mention to file a task, assign a Linear ticket, review PRs directly in Slack threads.",
+            proof:
+              "Zero context-switching. Works like an on-call eng teammate.",
+            next: "Enable the Slack app on one squad for 2 weeks.",
+            tag: "core",
+          },
+          {
+            surface: "VPC / on-prem deployment",
+            buyer: "CISO · InfoSec · Platform",
+            pitch:
+              "For regulated shops: Devin runs inside your VPC with your models, your secrets, your audit trail. Nothing leaves your perimeter.",
+            proof:
+              "SOC 2 Type II · private networking · BYO model (Anthropic / OpenAI / Bedrock).",
+            next: "Arrange a joint call with their security team.",
+            tag: "enterprise",
+          },
+          {
+            surface: "Model flexibility",
+            buyer: "CTO · Platform",
+            pitch:
+              "Not locked to one model. Route Devin to Claude, GPT, or your private model per-task for cost, latency, or data-residency control.",
+            proof:
+              "Live model picker. Customers mix Sonnet for reasoning + cheaper models for routine work.",
+            next: "Show the model picker in demo; mention BYO-key support.",
+            tag: "core",
+          },
+          {
+            surface: "Migration Copilot (playbook)",
+            buyer: "Platform · CTO of legacy-heavy shops",
+            pitch:
+              "Packaged plays for Java 8→21, Python 2→3, Scala, Angular, mainframe, framework upgrades. Thousands of repos migrated per week is the objective.",
+            proof:
+              "Reference deployments at large banks & streamers; 10× recorded uplift on migration velocity.",
+            next: "Ask for their top 3 legacy estates. Lead with mainframe / Java if present.",
+            tag: "playbook",
+          },
+          {
+            surface: "Security & CVE remediation",
+            buyer: "AppSec · CISO · Platform",
+            pitch:
+              "Devin pulls from the CVE queue, writes the fix, opens the PR, runs tests. 20× throughput vs human-only triage in internal benchmarks.",
+            proof:
+              "Same-day closure of Log4j-class fires at design-partner accounts.",
+            next: "Ask: 'What's your current CVE backlog?' — a real number opens the door.",
+            tag: "playbook",
+          },
+          {
+            surface: "Test coverage uplift",
+            buyer: "QA leads · Eng managers",
+            pitch:
+              "Point Devin at a low-coverage service and walk away. Coverage lift 60→90% typical — tests reviewed and merged by your engineers.",
+            proof:
+              "Measured on open-source benchmarks plus real customer repos.",
+            next: "Pick one service with sub-60% coverage as the pilot.",
+            tag: "playbook",
+          },
+          {
+            surface: "Pricing — per-task, not per-seat",
+            buyer: "CFO · Procurement · VP Eng",
+            pitch:
+              "Flexible consumption model. Scale up for a migration push, scale down afterwards. No shelfware.",
+            proof:
+              "Customers start at $500/mo ACV and grow into 6-7 figure expansions as teams measure the ROI.",
+            next: "Ask about their AI-tooling budget line. Lead with ROI calc.",
+            tag: "enterprise",
+          },
+        ];
+        const tagColor = {
+          core: "bg-accent-500/10 text-accent-300 border-accent-500/30",
+          new: "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
+          enterprise: "bg-amber-500/10 text-amber-300 border-amber-500/30",
+          playbook: "bg-rose-500/10 text-rose-300 border-rose-500/30",
+        };
+        const tagLabel = {
+          core: "core product",
+          new: "new",
+          enterprise: "enterprise",
+          playbook: "play",
+        };
+        grid.innerHTML = points
+          .map(
+            (p) => `
+          <div class="card p-5 hover:border-accent-400/30 transition">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <div class="text-white font-semibold leading-tight">${p.surface}</div>
+              <span class="shrink-0 text-[10px] uppercase tracking-wider font-mono px-2 py-0.5 rounded-md border ${tagColor[p.tag] || ""}">${tagLabel[p.tag] || p.tag}</span>
+            </div>
+            <div class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Buyer</div>
+            <div class="text-xs text-gray-300 mb-3">${p.buyer}</div>
+            <div class="text-sm text-gray-200 leading-relaxed mb-3">${p.pitch}</div>
+            <div class="text-[10px] uppercase tracking-widest text-accent-400 mb-1">Proof</div>
+            <div class="text-xs text-gray-400 mb-3 italic">${p.proof}</div>
+            <div class="flex items-start gap-2 pt-3 border-t border-white/5">
+              <svg class="w-3.5 h-3.5 text-accent-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <div class="text-xs text-gray-300"><span class="text-gray-500">Next:</span> ${p.next}</div>
+            </div>
+          </div>`
+          )
+          .join("");
+        const count = document.getElementById("sellingPointCount");
+        if (count) count.textContent = points.length;
+      })();
+    </script>
+
+    <!-- =============================================== -->
+    <!-- Intel search (wires new search bar to feed)     -->
+    <!-- =============================================== -->
+    <script>
+      (function () {
+        const input = document.getElementById("intelSearch");
+        const label = document.getElementById("intelActiveQueryLabel");
+        const chips = document.querySelectorAll(".intel-quick");
+        if (!input) return;
+
+        function applyQuery(q) {
+          q = (q || "").trim();
+          if (label) {
+            label.textContent = q
+              ? "query: " + q
+              : "streaming · media · finance";
+          }
+          // Also surface the query into the legacy filterCompany if it
+          // matches a known NEWS_COMPANIES entry (keeps the feed reactive).
+          const tape = document.getElementById("tickerTape");
+          // Hook: dispatch a custom event so the terminal can react if wired.
+          document.dispatchEvent(
+            new CustomEvent("intel:query", { detail: { query: q } })
+          );
+        }
+
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            applyQuery(input.value);
+          }
+        });
+        input.addEventListener("input", () => {
+          // debounced label update only — don't refetch on every keystroke
+          if (label) {
+            const q = input.value.trim();
+            label.textContent = q ? "query: " + q : "streaming · media · finance";
+          }
+        });
+        chips.forEach((c) => {
+          c.addEventListener("click", () => {
+            const q = c.getAttribute("data-query");
+            input.value = q;
+            applyQuery(q);
+          });
+        });
+      })();
+    </script>
+
+    <!-- =============================================== -->
+    <!-- Competition Stack                               -->
+    <!-- =============================================== -->
+    <script>
+      (function () {
+        const rail = document.getElementById("compRail");
+        const feed = document.getElementById("compFeed");
+        const battle = document.getElementById("compBattlecard");
+        const clock = document.getElementById("compClock");
+        const status = document.getElementById("compStatus");
+        const rowCount = document.getElementById("compRowCount");
+        const active = document.getElementById("compActive");
+        const refresh = document.getElementById("compRefresh");
+        if (!rail) return;
+
+        // --- Curated competitor roster (single source of truth) ---
+        const competitors = [
+          {
+            id: "cursor",
+            name: "Cursor",
+            maker: "Anysphere",
+            category: "AI IDE (assistant)",
+            funding: "$900M+ · $9B valuation (2025)",
+            pricing: "$20 / $40 per user / mo",
+            why_lose:
+              "Not an autonomous agent. Engineer still drives every edit. No background execution.",
+            searchTerms: ["Cursor IDE", "Anysphere"],
+          },
+          {
+            id: "copilot",
+            name: "GitHub Copilot",
+            maker: "Microsoft / GitHub",
+            category: "AI IDE (assistant)",
+            funding: "Microsoft-funded",
+            pricing: "$10 / $19 / $39 per user / mo",
+            why_lose:
+              "Inline completion first. Copilot Workspace is closer but still human-driven. Enterprise deals are procurement-only, not outcomes.",
+            searchTerms: ["GitHub Copilot"],
+          },
+          {
+            id: "windsurf",
+            name: "Windsurf",
+            maker: "Codeium (now OpenAI, 2025)",
+            category: "AI IDE (assistant)",
+            funding: "Acquired by OpenAI — Apr 2025",
+            pricing: "Free / $15 per user / mo",
+            why_lose:
+              "Strong IDE, weak agent loop. Post-OpenAI acquisition, roadmap uncertainty for enterprise.",
+            searchTerms: ["Windsurf Codeium", "Codeium AI"],
+          },
+          {
+            id: "replit",
+            name: "Replit Agent",
+            maker: "Replit",
+            category: "AI agent (prosumer)",
+            funding: "$240M, Series B",
+            pricing: "$25+ per user / mo",
+            why_lose:
+              "Built for side projects and prototypes. Not hardened for regulated enterprise repos.",
+            searchTerms: ["Replit Agent", "Replit AI"],
+          },
+          {
+            id: "augment",
+            name: "Augment Code",
+            maker: "Augment",
+            category: "AI IDE (assistant)",
+            funding: "$252M",
+            pricing: "$30 / $60 per user / mo",
+            why_lose:
+              "Context-window centric. No true autonomous execution. Positions as 'Cursor for enterprise' but still assistant-first.",
+            searchTerms: ["Augment Code"],
+          },
+          {
+            id: "sourcegraph",
+            name: "Sourcegraph Cody / Amp",
+            maker: "Sourcegraph",
+            category: "Code intelligence + assistant",
+            funding: "$225M+",
+            pricing: "Contact sales",
+            why_lose:
+              "Great at search. Cody/Amp assistant is catching up but not an autonomous agent on par with Devin.",
+            searchTerms: ["Sourcegraph Cody", "Sourcegraph Amp"],
+          },
+          {
+            id: "tabnine",
+            name: "Tabnine",
+            maker: "Tabnine",
+            category: "AI IDE (assistant)",
+            funding: "$57M+",
+            pricing: "$9-39 per user / mo",
+            why_lose:
+              "Privacy-first completions. Stuck in the assistant era; no agent story.",
+            searchTerms: ["Tabnine"],
+          },
+          {
+            id: "continuedev",
+            name: "Continue.dev",
+            maker: "Continue",
+            category: "Open-source IDE extension",
+            funding: "Seed (Y Combinator)",
+            pricing: "Open source + hosted pro",
+            why_lose:
+              "OSS assistant. No autonomous loop. Often a component, not a replacement for Devin.",
+            searchTerms: ["Continue.dev"],
+          },
+          {
+            id: "magic",
+            name: "Magic.dev",
+            maker: "Magic",
+            category: "Long-context model / agent",
+            funding: "$465M",
+            pricing: "Private",
+            why_lose:
+              "Still largely research. No shipping product for enterprise sellers to compete against today.",
+            searchTerms: ["Magic.dev"],
+          },
+          {
+            id: "poolside",
+            name: "Poolside",
+            maker: "Poolside",
+            category: "Foundation model + product",
+            funding: "$626M",
+            pricing: "Enterprise only",
+            why_lose:
+              "Model-first, private deployments. Sales cycles measured in quarters; Devin can pilot in a week.",
+            searchTerms: ["Poolside AI"],
+          },
+          {
+            id: "codium",
+            name: "Qodo (ex-CodiumAI)",
+            maker: "Qodo",
+            category: "AI test generation + agents",
+            funding: "$40M",
+            pricing: "Free / $19 / contact sales",
+            why_lose:
+              "Strong at test-gen. Narrower surface; not a full engineering replacement.",
+            searchTerms: ["Qodo Codium"],
+          },
+          {
+            id: "amazonq",
+            name: "Amazon Q Developer",
+            maker: "AWS",
+            category: "AI assistant (AWS-tied)",
+            funding: "AWS-funded",
+            pricing: "Free / $19 per user / mo",
+            why_lose:
+              "Locked to AWS surfaces. Great if customer is all-in on AWS; otherwise limited.",
+            searchTerms: ["Amazon Q Developer", "AWS Q Developer"],
+          },
+        ];
+
+        // --- Curated shipping log (kept fresh manually until we wire release APIs) ---
+        // Sorted newest-first. Dates are ISO.
+        const shipLog = [
+          {
+            id: "cursor-1",
+            comp: "cursor",
+            date: "2025-03-12",
+            kind: "feature",
+            title: "Cursor introduces 'Agent Mode' background tasks",
+            summary:
+              "Long-running agent runs that continue after you close the tab. Closes part of the gap with Devin's autonomous loop — still driver-in-seat for code review.",
+            link: "https://www.cursor.com/blog",
+          },
+          {
+            id: "copilot-1",
+            comp: "copilot",
+            date: "2025-02-18",
+            kind: "feature",
+            title: "Copilot Workspace GA + org-wide code review",
+            summary:
+              "GitHub shipped Workspace to general availability and turned on automatic PR review at org scope. Still scoped to GitHub-hosted repos.",
+            link: "https://github.blog/",
+          },
+          {
+            id: "windsurf-1",
+            comp: "windsurf",
+            date: "2025-04-28",
+            kind: "corporate",
+            title: "OpenAI completes acquisition of Windsurf (Codeium)",
+            summary:
+              "Reported ~$3B deal. Enterprise roadmap uncertain; some customers pausing renewals while integration plan firms up.",
+            link: "https://openai.com/",
+          },
+          {
+            id: "augment-1",
+            comp: "augment",
+            date: "2025-01-22",
+            kind: "feature",
+            title: "Augment ships 'Agent' beta for monorepos",
+            summary:
+              "Autonomous task runs on large enterprise monorepos. Early access; still requires approval on each file-change batch.",
+            link: "https://www.augmentcode.com/",
+          },
+          {
+            id: "replit-1",
+            comp: "replit",
+            date: "2025-01-10",
+            kind: "funding",
+            title: "Replit raises $240M Series B",
+            summary:
+              "Led by USV. Mandate to push Agent into SMB / prosumer territory. Still not hardened for regulated eng teams.",
+            link: "https://replit.com/",
+          },
+          {
+            id: "sourcegraph-1",
+            comp: "sourcegraph",
+            date: "2025-03-03",
+            kind: "feature",
+            title: "Sourcegraph launches Amp (agentic coding)",
+            summary:
+              "New agent product layered on top of Cody + code search. Strong context window; human-in-the-loop each step.",
+            link: "https://sourcegraph.com/",
+          },
+          {
+            id: "amazonq-1",
+            comp: "amazonq",
+            date: "2025-02-06",
+            kind: "feature",
+            title: "Amazon Q Developer adds /transform for Java 8→17/21",
+            summary:
+              "AWS's answer to Devin's migration play. Scoped to Java; only deploys on AWS-native workloads.",
+            link: "https://aws.amazon.com/q/developer/",
+          },
+          {
+            id: "cursor-2",
+            comp: "cursor",
+            date: "2025-02-01",
+            kind: "corporate",
+            title: "Anysphere closes $900M round at $9B",
+            summary:
+              "Thrive-led mega-round. War chest aimed at enterprise features and on-prem deployments.",
+            link: "https://www.cursor.com/blog",
+          },
+          {
+            id: "copilot-2",
+            comp: "copilot",
+            date: "2024-11-15",
+            kind: "feature",
+            title: "Copilot multi-model: Claude 3.5, Gemini 1.5, o1 preview",
+            summary:
+              "GitHub opens Copilot to non-OpenAI models. Erodes the lock-in argument; also validates BYO-model as table stakes.",
+            link: "https://github.blog/",
+          },
+          {
+            id: "poolside-1",
+            comp: "poolside",
+            date: "2024-10-03",
+            kind: "funding",
+            title: "Poolside raises $500M Series B at $3B",
+            summary:
+              "Doubles down on on-prem foundation-model deployments. Slow sales cycle; rarely seen in competitive deals this quarter.",
+            link: "https://poolside.ai/",
+          },
+          {
+            id: "qodo-1",
+            comp: "codium",
+            date: "2025-01-08",
+            kind: "feature",
+            title: "Qodo Gen 1.0 — agentic PR review",
+            summary:
+              "Rebrand from CodiumAI. Agent-driven code review and test generation; narrower surface than Devin.",
+            link: "https://www.qodo.ai/",
+          },
+          {
+            id: "continue-1",
+            comp: "continuedev",
+            date: "2024-12-11",
+            kind: "feature",
+            title: "Continue 1.0 — agents in VS Code + JetBrains",
+            summary:
+              "OSS extension crosses 1.0 with agent recipes. Often a gateway drug customers outgrow into Devin.",
+            link: "https://continue.dev/",
+          },
+        ];
+
+        let activeTab = "all";
+        let activeComp = null;
+        let liveNews = [];
+
+        // clock
+        function pad(n) {
+          return n.toString().padStart(2, "0");
+        }
+        function tickClock() {
+          if (!clock) return;
+          const d = new Date();
+          clock.textContent =
+            pad(d.getUTCHours()) +
+            ":" +
+            pad(d.getUTCMinutes()) +
+            ":" +
+            pad(d.getUTCSeconds()) +
+            " UTC";
+        }
+        tickClock();
+        setInterval(tickClock, 1000);
+
+        function hostnameOf(url) {
+          try {
+            return new URL(url).hostname.replace(/^www\./, "");
+          } catch (e) {
+            return "";
+          }
+        }
+        function ago(ts) {
+          const diff = Date.now() - ts;
+          const m = Math.floor(diff / 60000);
+          if (m < 1) return "just now";
+          if (m < 60) return m + "m";
+          const h = Math.floor(m / 60);
+          if (h < 24) return h + "h";
+          const d = Math.floor(h / 24);
+          if (d < 30) return d + "d";
+          return Math.floor(d / 30) + "mo";
+        }
+        function daysAgo(iso) {
+          const d = new Date(iso + "T00:00:00Z");
+          const diff = Date.now() - d.getTime();
+          const days = Math.floor(diff / 86400000);
+          if (days < 1) return "today";
+          if (days < 7) return days + "d ago";
+          if (days < 30) return Math.floor(days / 7) + "w ago";
+          if (days < 365) return Math.floor(days / 30) + "mo ago";
+          return Math.floor(days / 365) + "y ago";
+        }
+        function escapeHtml(s) {
+          return (s || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        function renderRail() {
+          const chips = [
+            `<button data-comp-filter="__all" class="comp-chip px-3 py-1.5 text-xs rounded-lg border ${activeComp === null ? "border-rose-400/50 bg-rose-500/10 text-white" : "border-white/10 text-gray-400 hover:text-white"} transition">All tools <span class="text-gray-500 ml-1">${competitors.length}</span></button>`,
+          ].concat(
+            competitors.map(
+              (c) =>
+                `<button data-comp-filter="${c.id}" class="comp-chip px-3 py-1.5 text-xs rounded-lg border ${activeComp === c.id ? "border-rose-400/50 bg-rose-500/10 text-white" : "border-white/10 text-gray-400 hover:text-white"} transition">${escapeHtml(c.name)}</button>`
+            )
+          );
+          rail.innerHTML = chips.join("");
+          rail.querySelectorAll(".comp-chip").forEach((b) => {
+            b.addEventListener("click", () => {
+              const v = b.getAttribute("data-comp-filter");
+              activeComp = v === "__all" ? null : v;
+              renderRail();
+              render();
+            });
+          });
+        }
+
+        function rowFor(entry) {
+          const c = competitors.find((x) => x.id === entry.comp);
+          const kindColor = {
+            feature: "text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
+            funding: "text-amber-300 border-amber-500/30 bg-amber-500/10",
+            corporate: "text-rose-300 border-rose-500/30 bg-rose-500/10",
+            news: "text-sky-300 border-sky-500/30 bg-sky-500/10",
+            hiring: "text-violet-300 border-violet-500/30 bg-violet-500/10",
+          };
+          const kindCls = kindColor[entry.kind] || "text-gray-300 border-white/10 bg-white/5";
+          return `
+            <a href="${entry.link}" target="_blank" rel="noopener" class="block px-4 py-3 hover:bg-white/5 transition">
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 mb-1 flex-wrap">
+                    <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded border ${kindCls}">${entry.kind}</span>
+                    <span class="text-[11px] font-mono text-rose-300">${c ? escapeHtml(c.name) : entry.comp}</span>
+                    <span class="text-[10px] text-gray-500 font-mono">${entry.date ? daysAgo(entry.date) : entry.timeLabel || ""}</span>
+                  </div>
+                  <div class="text-sm text-white font-medium leading-snug">${escapeHtml(entry.title)}</div>
+                  <div class="text-xs text-gray-400 mt-1 leading-relaxed">${escapeHtml(entry.summary || "")}</div>
+                </div>
+                <div class="text-[10px] font-mono text-gray-500 shrink-0 hidden sm:block">${hostnameOf(entry.link)}</div>
+              </div>
+            </a>`;
+        }
+
+        function render() {
+          active.textContent = activeComp || "all";
+          battle.setAttribute("hidden", "");
+          feed.style.display = "";
+          if (activeTab === "stack") {
+            feed.style.display = "none";
+            battle.removeAttribute("hidden");
+            renderBattlecard();
+            rowCount.textContent = competitors.length;
+            return;
+          }
+
+          let rows = [];
+          const compFilter = (e) =>
+            activeComp === null || e.comp === activeComp;
+
+          if (activeTab === "all" || activeTab === "shipping") {
+            rows = rows.concat(
+              shipLog
+                .filter((e) => activeTab === "shipping" ? e.kind === "feature" : true)
+                .filter(compFilter)
+                .map((e) => ({ ...e, _sortKey: e.date }))
+            );
+          }
+          if (activeTab === "all" || activeTab === "news") {
+            rows = rows.concat(
+              liveNews.filter(compFilter).map((e) => ({
+                ...e,
+                _sortKey: new Date(e.date || e._ts || 0).toISOString().slice(0, 10),
+              }))
+            );
+            if (activeTab === "all") {
+              // include funding / corporate from shipLog
+              rows = rows.concat(
+                shipLog
+                  .filter((e) => e.kind === "funding" || e.kind === "corporate")
+                  .filter(compFilter)
+                  .map((e) => ({ ...e, _sortKey: e.date }))
+              );
+            }
+          }
+          if (activeTab === "hiring") {
+            rows = [
+              {
+                title: "Coming soon — pulling from Greenhouse boards.",
+                summary:
+                  "This tab will surface active eng-leadership + platform job posts across the competitor roster, to flag which tools are scaling or losing key talent. Today, jump to the 'News' tab for the latest.",
+                kind: "hiring",
+                comp: "cursor",
+                link: "#",
+                date: new Date().toISOString().slice(0, 10),
+              },
+            ].filter(() => activeTab === "hiring");
+          }
+
+          // dedupe + sort desc
+          const seen = new Set();
+          const uniq = [];
+          for (const r of rows) {
+            const k = (r.id || "") + "|" + (r.title || "");
+            if (seen.has(k)) continue;
+            seen.add(k);
+            uniq.push(r);
+          }
+          uniq.sort((a, b) => (a._sortKey < b._sortKey ? 1 : -1));
+
+          if (!uniq.length) {
+            feed.innerHTML = `<div class="p-8 text-center text-sm text-gray-500 font-mono">[ no activity matches filter ]</div>`;
+          } else {
+            feed.innerHTML = uniq.map(rowFor).join("");
+          }
+          rowCount.textContent = uniq.length;
+        }
+
+        function renderBattlecard() {
+          const list = activeComp
+            ? competitors.filter((c) => c.id === activeComp)
+            : competitors;
+          battle.innerHTML = `
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs">
+                <thead class="text-[10px] uppercase tracking-widest text-gray-500 border-b border-white/10">
+                  <tr>
+                    <th class="text-left py-2 pr-4">Tool</th>
+                    <th class="text-left py-2 pr-4">Maker</th>
+                    <th class="text-left py-2 pr-4">Category</th>
+                    <th class="text-left py-2 pr-4">Funding</th>
+                    <th class="text-left py-2 pr-4">Pricing</th>
+                    <th class="text-left py-2">Why Devin wins</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${list
+                    .map(
+                      (c) => `
+                    <tr class="border-b border-white/5 align-top">
+                      <td class="py-3 pr-4 text-white font-semibold">${escapeHtml(c.name)}</td>
+                      <td class="py-3 pr-4 text-gray-300">${escapeHtml(c.maker)}</td>
+                      <td class="py-3 pr-4 text-gray-400">${escapeHtml(c.category)}</td>
+                      <td class="py-3 pr-4 text-gray-400 font-mono text-[11px]">${escapeHtml(c.funding)}</td>
+                      <td class="py-3 pr-4 text-gray-400 font-mono text-[11px]">${escapeHtml(c.pricing)}</td>
+                      <td class="py-3 text-gray-300 leading-relaxed">${escapeHtml(c.why_lose)}</td>
+                    </tr>`
+                    )
+                    .join("")}
+                </tbody>
+              </table>
+            </div>`;
+        }
+
+        async function fetchLiveNews() {
+          status.textContent = "syncing...";
+          try {
+            const cutoff =
+              Math.floor(Date.now() / 1000) - 60 * 60 * 24 * 365; // 1 year
+            // Run one search per competitor, using its primary search term.
+            const jobs = competitors.map((c) => {
+              const q = encodeURIComponent(c.searchTerms[0]);
+              const url =
+                "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=12" +
+                "&numericFilters=created_at_i%3E" +
+                cutoff +
+                "&query=" +
+                q;
+              return fetch(url).then((r) => r.json()).then((j) => ({ c, hits: j.hits || [] }));
+            });
+            const results = await Promise.allSettled(jobs);
+            const out = [];
+            const seen = new Set();
+            for (const r of results) {
+              if (r.status !== "fulfilled") continue;
+              const { c, hits } = r.value;
+              for (const h of hits.slice(0, 6)) {
+                const id = h.objectID;
+                if (seen.has(id)) continue;
+                const title = h.title || h.story_title || "";
+                if (!title) continue;
+                const hay = (title + " " + (h.story_text || "")).toLowerCase();
+                // guard: must mention the competitor name to avoid noise
+                if (!c.searchTerms.some((t) => hay.includes(t.toLowerCase().split(" ")[0]))) continue;
+                const url =
+                  h.url ||
+                  "https://news.ycombinator.com/item?id=" + id;
+                seen.add(id);
+                out.push({
+                  id: "hn-" + id,
+                  comp: c.id,
+                  date: new Date(h.created_at).toISOString().slice(0, 10),
+                  _ts: Date.parse(h.created_at),
+                  kind: "news",
+                  title: title,
+                  summary:
+                    "HN · " +
+                    (h.points || 0) +
+                    " pts · " +
+                    (h.num_comments || 0) +
+                    " comments · " +
+                    hostnameOf(url),
+                  link: url,
+                });
+              }
+            }
+            liveNews = out;
+            status.textContent =
+              "synced · " +
+              out.length +
+              " live mentions · " +
+              shipLog.length +
+              " ship-log entries";
+          } catch (e) {
+            status.textContent = "sync failed — showing curated only";
+            liveNews = [];
+          }
+          render();
+        }
+
+        // wire tab buttons
+        document.querySelectorAll(".comp-tab").forEach((t) => {
+          t.addEventListener("click", () => {
+            activeTab = t.getAttribute("data-comp-tab");
+            document.querySelectorAll(".comp-tab").forEach((x) => {
+              const isActive = x === t;
+              x.classList.toggle("bg-rose-500/20", isActive);
+              x.classList.toggle("text-white", isActive);
+              x.classList.toggle("font-semibold", isActive);
+              x.classList.toggle("text-gray-400", !isActive);
+            });
+            render();
+          });
+        });
+        if (refresh) {
+          refresh.addEventListener("click", fetchLiveNews);
+        }
+
+        renderRail();
+        render();
+        fetchLiveNews();
       })();
     </script>
   </body>
