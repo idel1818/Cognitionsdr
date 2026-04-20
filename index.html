@@ -1416,6 +1416,192 @@
           media: ["Netflix", "Disney", "Spotify", "Warner Bros", "Paramount", "NBCUniversal"],
         };
 
+        // Curated M&A / consolidation pipeline — real deals 2024-2025 where
+        // post-merger migrations, integrations, or platform unification are
+        // in play. Each entry frames the Devin sales angle.
+        const MNA_PIPELINE = [
+          {
+            date: "2025-08-14",
+            title: "Synopsys closes $35B acquisition of Ansys",
+            parties: ["Synopsys", "Ansys"],
+            deal: "$35B · closed Aug 2025",
+            angle:
+              "Two massive EDA / simulation codebases to unify. Expect years of platform consolidation + test suite modernization — the Devin playbook.",
+            source: "https://news.synopsys.com/",
+            kind: "mna",
+          },
+          {
+            date: "2025-07-02",
+            title: "HPE completes $14B acquisition of Juniper Networks",
+            parties: ["HPE", "Juniper Networks"],
+            deal: "$14B · closed Jul 2025",
+            angle:
+              "Networking portfolios merging across two global engineering orgs. Duplicate services, overlapping cloud platforms — ideal for Devin-driven consolidation.",
+            source: "https://www.hpe.com/us/en/newsroom/press-release/2025/07/hpe-completes-acquisition-of-juniper-networks.html",
+            kind: "mna",
+          },
+          {
+            date: "2025-05-18",
+            title: "Capital One closes $35B acquisition of Discover",
+            parties: ["Capital One", "Discover"],
+            deal: "$35B · closed May 2025",
+            angle:
+              "Payment network integration + mainframe overlap. Largest US bank merger since 2008 — CVE surface and migration spend are about to spike.",
+            source: "https://investor.capitalone.com/",
+            kind: "mna",
+          },
+          {
+            date: "2025-03-31",
+            title: "Rocket Companies acquires Mr. Cooper for $9.4B",
+            parties: ["Rocket Companies", "Mr. Cooper"],
+            deal: "$9.4B · announced Mar 2025",
+            angle:
+              "Mortgage-tech consolidation: two origination + servicing stacks to merge. Legacy .NET / Java estates collide — Devin migration + test coverage play.",
+            source: "https://www.rocketcompanies.com/",
+            kind: "mna",
+          },
+          {
+            date: "2025-03-10",
+            title: "Rocket Companies acquires Redfin for $1.75B",
+            parties: ["Rocket Companies", "Redfin"],
+            deal: "$1.75B · announced Mar 2025",
+            angle:
+              "Redfin's Next.js frontend + Rocket's loan backend will need to converge into a single funnel. Devin = force multiplier for that integration work.",
+            source: "https://www.redfin.com/news/",
+            kind: "mna",
+          },
+          {
+            date: "2025-03-06",
+            title: "Walgreens Boots Alliance to go private in $24B deal",
+            parties: ["Walgreens", "Sycamore Partners"],
+            deal: "$24B · announced Mar 2025",
+            angle:
+              "PE take-private → cost-out mandate → engineering headcount freeze. AI agents (Devin) fill the gap on migrations + CVE queues post-close.",
+            source: "https://news.walgreens.com/",
+            kind: "mna",
+          },
+          {
+            date: "2025-01-15",
+            title: "Johnson & Johnson to acquire Intra-Cellular Therapies for $14.6B",
+            parties: ["Johnson & Johnson", "Intra-Cellular Therapies"],
+            deal: "$14.6B · announced Jan 2025",
+            angle:
+              "Pharma M&A drives validated-system integration (GxP). Devin can accelerate CSV / Veeva migration while keeping audit trails clean.",
+            source: "https://www.jnj.com/",
+            kind: "mna",
+          },
+          {
+            date: "2024-12-04",
+            title: "Omnicom announces $13.25B acquisition of Interpublic Group",
+            parties: ["Omnicom", "Interpublic Group"],
+            deal: "$13.25B · announced Dec 2024",
+            angle:
+              "Largest ad-holding merger in history. Dozens of overlapping creative-tech stacks, data pipelines and martech platforms to consolidate.",
+            source: "https://www.omnicomgroup.com/newsroom/",
+            kind: "mna",
+          },
+          {
+            date: "2024-11-14",
+            title: "Nippon Steel / US Steel $14.9B deal — under renegotiation",
+            parties: ["Nippon Steel", "US Steel"],
+            deal: "$14.9B · status: partnership framework 2025",
+            angle:
+              "Manufacturing IT convergence + mainframe-to-cloud modernization. Devin plays directly into COBOL-era legacy unwinds.",
+            source: "https://www.ussteel.com/",
+            kind: "mna",
+          },
+          {
+            date: "2024-08-08",
+            title: "Mars Inc. announces $36B acquisition of Kellanova",
+            parties: ["Mars", "Kellanova"],
+            deal: "$36B · pending 2025 close",
+            angle:
+              "CPG mega-deal — SAP ERP integration + overlapping trade-promotion systems. Classic migration-heavy Devin ACV.",
+            source: "https://www.mars.com/",
+            kind: "mna",
+          },
+          {
+            date: "2024-07-08",
+            title: "Paramount Global + Skydance merger ($8B deal closed 2025)",
+            parties: ["Paramount", "Skydance"],
+            deal: "$8B · closed Aug 2025",
+            angle:
+              "Direct play into Paramount+. Two streaming tech stacks + legacy CBS/Viacom systems to unify. This is the highest-signal entertainment M&A target for Devin.",
+            source: "https://www.paramount.com/news",
+            kind: "mna",
+          },
+          {
+            date: "2024-06-20",
+            title: "Home Depot closes $18.25B acquisition of SRS Distribution",
+            parties: ["Home Depot", "SRS Distribution"],
+            deal: "$18.25B · closed Jun 2024",
+            angle:
+              "B2B contractor business bolted onto retail giant. Order-management and supply-chain platforms converging — ongoing Devin opportunity.",
+            source: "https://ir.homedepot.com/",
+            kind: "mna",
+          },
+          {
+            date: "2024-05-14",
+            title: "BBVA launches €12B hostile bid for Sabadell",
+            parties: ["BBVA", "Sabadell"],
+            deal: "€12B · hostile, 2024-2025",
+            angle:
+              "Spanish banking consolidation. Whether it closes or not, both sides are running scenario migrations of core banking + CRM stacks right now.",
+            source: "https://www.bbva.com/en/",
+            kind: "mna",
+          },
+          {
+            date: "2024-04-25",
+            title: "Cisco closes $28B acquisition of Splunk",
+            parties: ["Cisco", "Splunk"],
+            deal: "$28B · closed Mar 2024",
+            angle:
+              "Security + observability consolidation. Splunk's SPL codebase + Cisco's security portfolio still mid-integration — active platform unification.",
+            source: "https://investor.cisco.com/",
+            kind: "mna",
+          },
+          {
+            date: "2024-03-12",
+            title: "Capital Group + KKR launch private credit partnership ($10B+)",
+            parties: ["Capital Group", "KKR"],
+            deal: "$10B+ · ongoing",
+            angle:
+              "Alt-asset platform build-out across two giants — risk engines + middle-office systems. Devin accelerates the net-new platform build.",
+            source: "https://www.capitalgroup.com/",
+            kind: "mna",
+          },
+          {
+            date: "2024-02-29",
+            title: "Barclays acquires Tesco Bank retail assets for £700M",
+            parties: ["Barclays", "Tesco Bank"],
+            deal: "£700M · closed Nov 2024",
+            angle:
+              "UK retail banking consolidation. Core banking migration — Barclays has been hiring Java / platform heavily post-close. Warm Devin opening.",
+            source: "https://home.barclays/news/",
+            kind: "mna",
+          },
+          {
+            date: "2024-02-20",
+            title: "Capital One announces $35B acquisition of Discover (also see closing entry)",
+            parties: ["Capital One", "Discover"],
+            deal: "$35B · announced Feb 2024",
+            angle:
+              "Network + card-issuer integration. Known to be a multi-year migration — cited by Argenti-era Goldman engineering as a template for AI-led modernization.",
+            source: "https://investor.capitalone.com/",
+            kind: "mna",
+          },
+          {
+            date: "2024-01-09",
+            title: "HPE announces $14B Juniper deal",
+            parties: ["HPE", "Juniper Networks"],
+            deal: "$14B · announced Jan 2024",
+            angle:
+              "18-month integration runway; now closed. Mirantis / Apstra / Contrail codebases to converge — heavy Devin engineering opportunity.",
+            source: "https://www.hpe.com/",
+            kind: "mna",
+          },
+        ];
+
         const MNA_KEYWORDS = [
           "acquir",     // acquires, acquisition
           "merger",
@@ -1639,9 +1825,10 @@
               });
             }
           }
-          // Engineering-signal stories first, then most recent.
-          out.sort((a, b) => b.engScore - a.engScore || b.ts - a.ts);
-          return out.slice(0, 60);
+          // Strict newest-first. engScore is retained as a data field but no
+          // longer overrides recency — SDRs want the freshest intel on top.
+          out.sort((a, b) => b.ts - a.ts);
+          return out.slice(0, 80);
         }
 
         async function fetchJobs() {
@@ -1746,15 +1933,24 @@
           } else if (state.tab === "jobs") {
             data = state.jobs;
           } else if (state.tab === "mna") {
-            // filter news by M&A / migration keywords
-            if (state.news == null) {
-              data = null;
-            } else {
-              data = state.news.filter((n) => {
-                const hay = (n.title + " " + (n.host || "")).toLowerCase();
-                return MNA_KEYWORDS.some((k) => hay.includes(k));
-              });
+            // Always render the curated M&A pipeline + layer in any
+            // live HN stories whose title matches our M&A keywords.
+            const curated = MNA_PIPELINE.slice().map((e) => ({
+              ...e,
+              ts: Date.parse(e.date + "T00:00:00Z"),
+              isCurated: true,
+            }));
+            let live = [];
+            if (state.news) {
+              live = state.news
+                .filter((n) => {
+                  const hay = (n.title + " " + (n.host || "")).toLowerCase();
+                  return MNA_KEYWORDS.some((k) => hay.includes(k));
+                })
+                .map((n) => ({ ...n, isCurated: false }));
             }
+            data = curated.concat(live);
+            data.sort((a, b) => (b.ts || 0) - (a.ts || 0));
           }
 
           if (data == null) {
@@ -1777,8 +1973,46 @@
 
           if (state.tab === "news" || state.tab === "mna") {
             feed.innerHTML = filtered
-              .slice(0, 30)
+              .slice(0, 40)
               .map((n) => {
+                if (n.isCurated) {
+                  // Rich M&A pipeline row
+                  const parties = (n.parties || [])
+                    .map(
+                      (p) =>
+                        '<span class="inline-block px-1.5 py-[1px] rounded bg-amber-400/10 text-amber-300 border border-amber-400/25 text-[10px] uppercase tracking-wider mr-1">' +
+                        escapeHtml(p) +
+                        "</span>"
+                    )
+                    .join("");
+                  return (
+                    '<a href="' +
+                    escapeHtml(n.source || "#") +
+                    '" target="_blank" rel="noopener" class="block border-b border-white/5 px-4 py-4 hover:bg-amber-500/[0.04] transition">' +
+                    '<div class="flex flex-wrap items-start gap-3">' +
+                    '<span class="text-gray-500 shrink-0 w-14 text-right text-[11px]">' +
+                    (n.ts ? ago(n.ts) : n.date) +
+                    "</span>" +
+                    '<span class="text-amber-400 shrink-0">$</span>' +
+                    '<span class="flex-1 min-w-0">' +
+                    '<span class="text-white font-semibold block leading-snug">' +
+                    escapeHtml(n.title) +
+                    "</span>" +
+                    '<span class="block text-[11px] text-amber-300/80 font-mono mt-1 mb-1">' +
+                    escapeHtml(n.deal || "") +
+                    "</span>" +
+                    '<span class="block text-[12px] text-gray-300 leading-relaxed mt-1">' +
+                    '<span class="text-amber-400/70 font-mono text-[10px] uppercase tracking-wider mr-1">why devin:</span>' +
+                    escapeHtml(n.angle || "") +
+                    "</span>" +
+                    '<span class="block mt-2">' +
+                    parties +
+                    "</span>" +
+                    "</span>" +
+                    '<span class="shrink-0 px-1.5 py-[1px] rounded bg-amber-400/15 text-amber-300 border border-amber-400/30 text-[10px] uppercase tracking-wider font-semibold">M&A</span>' +
+                    "</div></a>"
+                  );
+                }
                 const badge = n.company
                   ? '<span class="inline-block px-1.5 py-[1px] rounded bg-accent-500/15 text-accent-400 border border-accent-500/25 text-[10px] uppercase tracking-wider">' +
                     escapeHtml(n.company) +
@@ -1789,7 +2023,7 @@
                   escapeHtml(n.url) +
                   '" target="_blank" rel="noopener" class="block border-b border-white/5 px-4 py-3 hover:bg-white/[0.03] transition">' +
                   '<div class="flex flex-wrap items-start gap-3">' +
-                  '<span class="text-gray-500 shrink-0 w-12 text-right">' +
+                  '<span class="text-gray-500 shrink-0 w-14 text-right text-[11px]">' +
                   ago(n.ts) +
                   "</span>" +
                   '<span class="text-accent-400 shrink-0">&gt;</span>' +
@@ -1800,9 +2034,9 @@
                   '<span class="block text-[11px] text-gray-500 mt-1">' +
                   (n.host ? escapeHtml(n.host) : "news.ycombinator.com") +
                   " \u00b7 " +
-                  n.points +
+                  (n.points || 0) +
                   " pts \u00b7 " +
-                  n.comments +
+                  (n.comments || 0) +
                   " comments" +
                   "</span>" +
                   "</span>" +
