@@ -786,13 +786,23 @@
                 data-tab="jobs"
                 class="tab-btn px-3 py-1.5 text-xs font-semibold rounded-md font-mono uppercase tracking-wider text-gray-400 hover:text-white transition"
               >
-                Open Roles
+                New Roles
+              </button>
+              <button
+                data-tab="mna"
+                class="tab-btn px-3 py-1.5 text-xs font-semibold rounded-md font-mono uppercase tracking-wider text-gray-400 hover:text-white transition"
+              >
+                M&amp;A / Migrations
               </button>
             </div>
             <div
               id="companyFilter"
               class="flex flex-wrap items-center gap-1.5 text-[11px]"
+              hidden
             ></div>
+            <div id="termQueryBadge" class="text-[11px] font-mono text-accent-400 px-2 py-1 rounded border border-accent-500/25 bg-accent-500/5">
+              query: <span id="termQueryText">streaming &middot; media &middot; finance</span>
+            </div>
             <button
               id="termRefresh"
               class="ml-auto text-[11px] font-mono text-accent-400 hover:text-white border border-accent-500/30 hover:border-accent-400 rounded-md px-3 py-1.5 transition flex items-center gap-1.5"
@@ -1391,7 +1401,50 @@
           news: null, // array once loaded
           jobs: null,
           loading: true,
+          searchQuery: "", // free-text company/industry query
         };
+
+        // Industry → seed terms (used when user searches a vertical, not a company)
+        const INDUSTRY_SEEDS = {
+          healthcare: ["UnitedHealth", "CVS Health", "Optum", "Elevance", "HCA Healthcare", "Pfizer"],
+          telco: ["AT&T", "Verizon", "T-Mobile", "Comcast", "BT Group", "Vodafone"],
+          retail: ["Walmart", "Target", "Kroger", "Home Depot", "Costco", "Best Buy"],
+          gaming: ["Roblox", "Riot Games", "Epic Games", "Activision Blizzard", "Electronic Arts", "Ubisoft"],
+          finance: ["Goldman Sachs", "JPMorgan", "Morgan Stanley", "Barclays", "Lloyds", "Citi"],
+          banking: ["JPMorgan", "Bank of America", "Wells Fargo", "Citi", "HSBC", "Barclays"],
+          streaming: ["Netflix", "Disney", "Spotify", "Warner Bros", "Paramount", "DAZN"],
+          media: ["Netflix", "Disney", "Spotify", "Warner Bros", "Paramount", "NBCUniversal"],
+        };
+
+        const MNA_KEYWORDS = [
+          "acquir",     // acquires, acquisition
+          "merger",
+          "merge ",
+          "merging",
+          "spin off",
+          "spin-off",
+          "divest",
+          "consolidat",
+          "post-merger",
+          "carve-out",
+          "carve out",
+          "integration",
+          "migrat",
+          "re-platform",
+          "replatform",
+          "modernis",
+          "modernize",
+          "mainframe",
+          "cobol",
+          "legacy",
+          "cloud migrat",
+          "data center exit",
+          "aws migrat",
+          "azure migrat",
+          "gcp migrat",
+          "layoff",
+          "restructur",
+        ];
 
         const $ = (id) => document.getElementById(id);
 
@@ -1498,10 +1551,11 @@
           "open-source",
         ];
 
-        function companyMatch(haystack) {
+        function companyMatch(haystack, roster) {
           // Exact-substring match for the company name; for very short names,
           // require word boundaries to avoid false hits inside URLs/words.
-          for (const c of NEWS_COMPANIES) {
+          const list = roster && roster.length ? roster : NEWS_COMPANIES;
+          for (const c of list) {
             const cl = c.toLowerCase();
             if (cl.length < 5) {
               const re = new RegExp(
@@ -1520,7 +1574,21 @@
           // only keep stories whose title/url/text actually mentions the company.
           const cutoff =
             Math.floor(Date.now() / 1000) - 60 * 60 * 24 * 365 * 2; // 2 years
-          const queries = NEWS_COMPANIES.map((c) => {
+          // Determine which terms to query. If user has typed a search, use
+          // that (expanded into industry seeds if it's a vertical name);
+          // otherwise fall back to the default media/finance set.
+          let companies = NEWS_COMPANIES;
+          if (state.searchQuery) {
+            const key = state.searchQuery.toLowerCase().trim();
+            if (INDUSTRY_SEEDS[key]) {
+              companies = INDUSTRY_SEEDS[key];
+            } else {
+              // treat as a free-text company / industry name
+              companies = [state.searchQuery];
+            }
+          }
+          const activeCompanies = companies;
+          const queries = activeCompanies.map((c) => {
             const q = encodeURIComponent(c);
             return (
               "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=40" +
@@ -1551,7 +1619,7 @@
                 " " +
                 (h.story_text || "")
               ).toLowerCase();
-              const company = companyMatch(haystack);
+              const company = companyMatch(haystack, activeCompanies);
               if (!company) continue; // strict: must actually mention a target co
               seen.add(id);
               const engScore = ENG_SIGNALS.some((k) => haystack.includes(k))
@@ -1672,7 +1740,22 @@
 
         function renderFeed() {
           const feed = $("termFeed");
-          const data = state.tab === "news" ? state.news : state.jobs;
+          let data;
+          if (state.tab === "news") {
+            data = state.news;
+          } else if (state.tab === "jobs") {
+            data = state.jobs;
+          } else if (state.tab === "mna") {
+            // filter news by M&A / migration keywords
+            if (state.news == null) {
+              data = null;
+            } else {
+              data = state.news.filter((n) => {
+                const hay = (n.title + " " + (n.host || "")).toLowerCase();
+                return MNA_KEYWORDS.some((k) => hay.includes(k));
+              });
+            }
+          }
 
           if (data == null) {
             feed.innerHTML =
@@ -1692,7 +1775,7 @@
             return;
           }
 
-          if (state.tab === "news") {
+          if (state.tab === "news" || state.tab === "mna") {
             feed.innerHTML = filtered
               .slice(0, 30)
               .map((n) => {
@@ -1732,8 +1815,10 @@
               .join("");
             $("termStatus").textContent =
               filtered.length +
-              " rows \u00b7 NEWS \u00b7 filter=" +
-              state.filter +
+              " rows \u00b7 " +
+              (state.tab === "mna" ? "M&A / MIGRATION" : "NEWS") +
+              " \u00b7 query=" +
+              (state.searchQuery || "default") +
               " \u00b7 last_sync=" +
               new Date().toISOString().split("T")[1].slice(0, 8) +
               "Z";
@@ -1852,6 +1937,17 @@
         }
 
         $("termRefresh").addEventListener("click", loadAll);
+
+        // Listen for dynamic search queries dispatched by the top search bar.
+        document.addEventListener("intel:query", (e) => {
+          const q = (e.detail && e.detail.query) || "";
+          state.searchQuery = q;
+          const badge = document.getElementById("termQueryText");
+          if (badge) {
+            badge.textContent = q ? q : "streaming · media · finance";
+          }
+          loadAll();
+        });
 
         renderCompanyFilter();
         loadAll();
